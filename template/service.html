@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Services — SiriSafety</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* =============================================
+           RESET & BASE
+        ============================================= */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #f5f7fb;
+            color: #1a1a1a;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* =============================================
+           KEYFRAMES
+        ============================================= */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-70px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(36px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.88);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% center;
+            }
+
+            100% {
+                background-position: 200% center;
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        @keyframes pulseRing {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 102, 0, 0.35);
+            }
+
+            70% {
+                box-shadow: 0 0 0 14px rgba(255, 102, 0, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 102, 0, 0);
+            }
+        }
+
+        /* =============================================
+           SCROLL-REVEAL SYSTEM
+        ============================================= */
+        .reveal {
+            opacity: 0;
+            transform: translateY(44px);
+            transition: opacity 0.6s cubic-bezier(.22, .61, .36, 1),
+                transform 0.6s cubic-bezier(.22, .61, .36, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-44px);
+            transition: opacity 0.6s cubic-bezier(.22, .61, .36, 1),
+                transform 0.6s cubic-bezier(.22, .61, .36, 1);
+        }
+
+        .reveal-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.55s cubic-bezier(.22, .61, .36, 1),
+                transform 0.55s cubic-bezier(.22, .61, .36, 1);
+        }
+
+        .reveal-scale.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Card stagger delays */
+        .d0 {
+            transition-delay: 0ms !important;
+        }
+
+        .d1 {
+            transition-delay: 90ms !important;
+        }
+
+        .d2 {
+            transition-delay: 180ms !important;
+        }
+
+        .d3 {
+            transition-delay: 270ms !important;
+        }
+
+        .d4 {
+            transition-delay: 360ms !important;
+        }
+
+        .d5 {
+            transition-delay: 450ms !important;
+        }
+
+        /* Feature box delays */
+        .fd0 {
+            transition-delay: 0ms !important;
+        }
+
+        .fd1 {
+            transition-delay: 120ms !important;
+        }
+
+        .fd2 {
+            transition-delay: 240ms !important;
+        }
+
+        .fd3 {
+            transition-delay: 360ms !important;
+        }
+
+        /* Footer col delays */
+        .ft0 {
+            transition-delay: 0ms !important;
+        }
+
+        .ft1 {
+            transition-delay: 100ms !important;
+        }
+
+        .ft2 {
+            transition-delay: 200ms !important;
+        }
+
+        /* =============================================
+           NAVBAR  (from home page)
+        ============================================= */
+        .custom-navbar {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 20px 0;
+            transition: all .4s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, .08);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            animation: slideDown .8s ease;
+        }
+
+        .custom-navbar:hover {
+            box-shadow: 0 15px 35px rgba(0, 0, 0, .12);
+        }
+
+        .logo {
+            width: 180px;
+            transition: .5s;
+            cursor: pointer;
+        }
+
+        .logo:hover {
+            transform: scale(1.08) rotate(-3deg);
+            filter: drop-shadow(0 10px 20px rgba(255, 102, 0, .35));
+        }
+
+        .navbar-nav {
+            gap: 12px;
+        }
+
+        .navbar-nav .nav-link {
+            color: #003366 !important;
+            font-weight: 600;
+            padding: 10px 18px !important;
+            border-radius: 30px;
+            position: relative;
+            transition: 0.35s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #003366 !important;
+            background: rgba(0, 51, 102, 0.08);
+            transform: translateY(-3px);
+        }
+
+        .navbar-nav .nav-link.active {
+            color: #003366 !important;
+            background: rgba(0, 51, 102, 0.12);
+        }
+
+        .navbar-nav .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 6px;
+            width: 0;
+            height: 2px;
+            background: rgb(44, 33, 89);
+            transform: translateX(-50%);
+            transition: .3s;
+        }
+
+        .navbar-nav .nav-link:hover::after,
+        .navbar-nav .nav-link.active::after {
+            width: 60%;
+        }
+
+        .dropdown-menu {
+            border: none;
+            border-radius: 15px;
+            padding: 10px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, .12);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            display: block;
+            transition: .35s;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            border-radius: 10px;
+            padding: 10px 15px;
+            transition: .3s;
+        }
+
+        .dropdown-item:hover {
+            background: #ff6600;
+            color: white;
+            transform: translateX(6px);
+        }
+
+        .download-btn {
+            margin-left: 25px;
+            background: #ff6600;
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            transition: .35s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .download-btn:hover {
+            background: #003366;
+            color: white;
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px rgba(0, 51, 102, .35);
+        }
+
+        .navbar-toggler {
+            border: none;
+            box-shadow: none !important;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        @media(max-width:991px) {
+            .logo {
+                width: 150px;
+            }
+
+            .navbar-collapse {
+                margin-top: 20px;
+                padding: 20px;
+                border-radius: 15px;
+                background: white;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, .08);
+            }
+
+            .navbar-nav {
+                gap: 8px;
+            }
+        }
+
+        /*HERO*/
+        
+        .hero {
+            background: linear-gradient(135deg, #071b3a 0%, #0b2c5f 40%, #154b8a 70%, #1d5fb8 100%);
+            padding: 70px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 520px;
+            height: 520px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 102, 0, 0.18);
+            border: 1px solid rgba(255, 102, 0, 0.35);
+            color: #ffb703;
+            font-size: 12.5px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 6px 18px;
+            border-radius: 40px;
+            margin-bottom: 26px;
+            animation: fadeIn 0.6s ease 0.2s both;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 54px);
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.2;
+            max-width: 820px;
+            margin: 0 auto 22px;
+            animation: fadeUp 0.7s ease 0.35s both;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(90deg, #ff6600, #ffb703, #ff6600);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s linear infinite;
+        }
+
+        .hero p {
+            font-size: clamp(15px, 2vw, 18px);
+            color: rgba(255, 255, 255, 0.82);
+            max-width: 760px;
+            margin: 0 auto 44px;
+            line-height: 1.8;
+            animation: fadeUp 0.7s ease 0.5s both;
+        }
+        /* =SECTION HEADER */
+
+        .section-header {
+            text-align: center;
+            padding: 72px 24px 0;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: rgba(255, 102, 0, 0.1);
+            color: #ff6600;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            padding: 5px 16px;
+            border-radius: 40px;
+            margin-bottom: 14px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(26px, 4vw, 40px);
+            font-weight: 800;
+            color: #0b2c5f;
+            margin-bottom: 14px;
+        }
+
+        .section-header p {
+            font-size: 15.5px;
+            color: #6b7280;
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .section-divider {
+            width: 56px;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6600, #ffb703);
+            border-radius: 4px;
+            margin: 18px auto 0;
+        }
+
+        
+/* ==========================
+   SERVICES GRID
+========================== */
+
+.services-grid{
+    max-width:1300px;
+    margin:60px auto;
+    padding:0 20px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+    gap:30px;
+}
+
+/* ==========================
+   CARD
+========================== */
+
+.service-card{
+    transition: all .4s ease;
+}
+
+.service-card:hover{
+    transform:translateY(-12px) scale(1.02);
+    box-shadow:0 18px 40px rgba(11,61,145,.18);
+    border-color:#1565c0;
+}
+.card-visual{
+    transition:.4s ease;
+}
+
+.card-visual svg{
+    transition:.4s ease;
+}
+
+.service-card:hover .card-visual{
+    background:#1565c0;
+}
+
+.service-card:hover .card-visual svg{
+    transform:scale(1.2) rotate(8deg);
+    stroke:#fff;
+    fill:#fff;
+}
+.service-card{
+    position:relative;
+    overflow:hidden;
+}
+
+.service-card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:4px;
+    background:linear-gradient(90deg,#0b3d91,#42a5f5,#0b3d91);
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:.4s;
+}
+
+.service-card:hover::before{
+    transform:scaleX(1);
+}
+.card-body p{
+    transition:.3s;
+}
+
+.service-card:hover p{
+    color:#444;
+}
+
+@keyframes floatIcon{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-6px);
+    }
+}
+
+.card-visual svg{
+    animation:floatIcon 3s ease-in-out infinite;
+}
+.service-card{
+    opacity:0;
+    transform:translateY(40px);
+    animation:cardFade .8s ease forwards;
+}
+
+.service-card:nth-child(1){animation-delay:.1s;}
+.service-card:nth-child(2){animation-delay:.2s;}
+.service-card:nth-child(3){animation-delay:.3s;}
+.service-card:nth-child(4){animation-delay:.4s;}
+.service-card:nth-child(5){animation-delay:.5s;}
+.service-card:nth-child(6){animation-delay:.6s;}
+
+@keyframes cardFade{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+/* ==========================
+   ICON
+========================== */
+
+.card-visual{
+    width:100px;
+    height:100px;
+    margin:0 auto 30px;
+    background:#edf4ff;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.card-visual svg{
+    width:48px;
+    height:48px;
+    stroke:#0b2c7d;
+    fill:#0b2c7d;
+}
+
+/* Remove gradient backgrounds */
+
+.grad-road,
+.grad-traffic,
+.grad-industry,
+.grad-fire,
+.grad-install,
+.grad-smart{
+    background:#edf4ff;
+}
+
+.card-visual::after,
+.card-visual-overlay{
+    display:none;
+}
+
+/* ==========================
+   TEXT
+========================== */
+
+.card-body{
+    padding:0;
+}
+
+.card-body h3{
+    font-size:20px;
+    font-weight:700;
+    color:#071b5c;
+    margin-bottom:18px;
+    line-height:1.4;
+    font-family:Georgia, serif;
+}
+
+.card-body p{
+    color:#666;
+    font-size:16px;
+    line-height:1.8;
+}
+.service-card{
+    background:#fff;
+    border:1px solid #e9edf5;
+    border-radius:6px;
+    text-align:center;
+    padding:45px 35px;
+    box-shadow:0 3px 12px rgba(0,0,0,.05);
+
+    position:relative;
+    overflow:hidden;
+
+    opacity:0;
+    transform:translateY(40px);
+    transition:all .4s ease;
+    animation:cardFade .8s ease forwards;
+}
+.card-body h3{
+    transition:.3s;
+}
+
+.service-card:hover h3{
+    color:#1565c0;
+}
+.service-card:hover .card-visual{
+    background:#1565c0;
+    box-shadow:0 0 25px rgba(21,101,192,.35);
+}
+.service-card:hover .card-visual svg{
+    animation:none;
+    transform:scale(1.2) rotate(8deg);
+}
+
+
+        /* =============================================
+           FEATURED SOLUTIONS
+        ============================================= */
+       .featured-section{
+    background:linear-gradient(to bottom,#f8fbff,#eef5ff);
+    padding:90px 24px;
+    position:relative;
+    overflow:hidden;
+}
+.featured-grid{
+    max-width:1200px;
+    margin:60px auto 0;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:28px;
+}
+.feature-box{
+    background:#fff;
+    border-radius:18px;
+    padding:35px 28px;
+    border:1px solid #dce8f8;
+    box-shadow:0 8px 30px rgba(13,71,161,.08);
+    transition:.4s ease;
+    position:relative;
+    overflow:hidden;
+}
+
+.feature-box:hover{
+    transform:translateY(-10px);
+    box-shadow:0 20px 45px rgba(13,71,161,.18);
+}
+.feature-box::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:5px;
+    background:linear-gradient(90deg,#0d47a1,#42a5f5,#1565c0);
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:.5s;
+}
+
+.feature-box:hover::before{
+    transform:scaleX(1);
+}
+.feature-box::after{
+    content:"";
+    position:absolute;
+    width:170px;
+    height:170px;
+    border-radius:50%;
+    background:rgba(33,150,243,.05);
+    right:-60px;
+    bottom:-60px;
+}
+.box-icon{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    background:#edf5ff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#0d47a1;
+    margin-bottom:25px;
+    transition:.4s;
+}
+
+.feature-box:hover .box-icon{
+    background:#1565c0;
+    color:#fff;
+    transform:rotate(8deg) scale(1.1);
+}
+.feature-box h3{
+    font-size:22px;
+    font-weight:700;
+    color:#0b2c5f;
+    margin-bottom:10px;
+}
+
+.feature-box:hover h3{
+    color:#1565c0;
+}
+.feature-tagline{
+    color:#6c7a91;
+    font-size:14px;
+    margin-bottom:22px;
+    line-height:1.6;
+}
+.feature-list{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+.feature-item{
+    background:#f5f9ff;
+    border:1px solid #e6eefb;
+    border-radius:10px;
+    padding:12px 15px;
+    font-size:14px;
+    color:#4a5568;
+    transition:.3s;
+}
+
+.feature-item:hover{
+    background:#e9f3ff;
+    transform:translateX(8px);
+}
+.feature-dot{
+    width:8px;
+    height:8px;
+    background:#1565c0;
+    border-radius:50%;
+}
+
+.feature-item:hover .feature-dot{
+    transform:scale(1.5);
+}
+
+
+        /* =============================================
+           FOOTER  (from home page)
+        ============================================= */
+
+        .footer-map {
+    width: 100%;
+    height: 180px;
+    border: none;
+    border-radius: 0px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.footer-map iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: 12px;
+}
+
+
+        footer {
+            background: linear-gradient(135deg, #0b2c5f, #154b8a, #1d5fb8);
+            color: #fff;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            padding: 45px 8% 30px;
+            position: relative;
+            overflow: hidden;
+            align-items: start;
+        }
+
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #ffb703, #ff6b00, #ffb703);
+        }
+
+        footer::after {
+            content: "";
+            position: absolute;
+            width: 320px;
+            height: 320px;
+            background: rgba(255, 255, 255, .04);
+            border-radius: 50%;
+            top: -150px;
+            right: -120px;
+        }
+
+        .footer-box {
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-box h3 {
+            font-size: 22px;
+            margin-bottom: 18px;
+            font-weight: 600;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-box h3::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 50px;
+            height: 3px;
+            background: #ffb703;
+            border-radius: 20px;
+        }
+
+        .footer-box p {
+            color: #d8e4f5;
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+
+        .footer-box a {
+            display: block;
+            color: #d8e4f5;
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: .3s;
+            font-size: 15px;
+        }
+
+        .footer-box a:hover {
+            color: #ffb703;
+            transform: translateX(6px);
+        }
+
+        .footer-box .fa-solid {
+            color: #ffb703;
+            margin-right: 10px;
+            width: 20px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .social-icons i {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .12);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: .35s;
+            font-size: 18px;
+        }
+
+        .social-icons i:hover {
+            background: #ffb703;
+            color: #0b2c5f;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 18px rgba(255, 183, 3, .4);
+        }
+
+        .copyright {
+            background: #071b3a;
+            color: #d8e4f5;
+            text-align: center;
+            padding: 18px;
+            font-size: 15px;
+            border-top: 1px solid rgba(255, 255, 255, .15);
+        }
+
+        @media(max-width:992px) {
+            footer {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+                padding: 40px 6%;
+            }
+        }
+
+        @media(max-width:768px) {
+            footer {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 35px 25px;
+            }
+
+            .footer-box h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .social-icons {
+                justify-content: center;
+            }
+        }
+
+        @media(max-width:480px) {
+            .footer-box h3 {
+                font-size: 20px;
+            }
+
+            .footer-box p,
+            .footer-box a {
+                font-size: 14px;
+            }
+
+            .social-icons i {
+                width: 38px;
+                height: 38px;
+                font-size: 16px;
+            }
+
+            .copyright {
+                font-size: 14px;
+                padding: 15px;
+            }
+        }
+
+        /* =============================================
+           RESPONSIVE (hero / services)
+        ============================================= */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 72px 20px;
+            }
+
+            .hero-stats {
+                gap: 0;
+            }
+
+            .stat-item {
+                padding: 14px 20px;
+            }
+
+            .services-grid {
+                padding: 0 16px 60px;
+            }
+
+            .featured-section {
+                padding: 60px 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .stat-num {
+                font-size: 26px;
+            }
+
+            .section-header h2 {
+                font-size: 24px;
+            }
+        }
+
+        /* =============================================
+           PREFERS REDUCED MOTION
+        ============================================= */
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .reveal,
+            .reveal-left,
+            .reveal-scale {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+
+        /* =============================================
+           WHATSAPP FLOATING BUTTON
+        ============================================= */
+        .whatsapp-float {
+            position: fixed;
+            width: 65px;
+            height: 65px;
+            right: 30px;
+            bottom: 30px;
+            background: #25D366;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 35px;
+            z-index: 9999;
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, .5);
+            animation: whatsappFloat 3s ease-in-out infinite;
+            transition: .4s;
+        }
+
+        .whatsapp-float::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #25D366;
+            border-radius: 50%;
+            z-index: -1;
+            animation: whatsappPulse 2s infinite;
+        }
+
+        .whatsapp-float i {
+            transition: .3s;
+        }
+
+        .whatsapp-float:hover {
+            background: #128C7E;
+            transform: translateY(-8px) scale(1.1);
+            color: white;
+        }
+
+        .whatsapp-float:hover i {
+            transform: rotate(15deg);
+        }
+
+        @keyframes whatsappFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        @keyframes whatsappPulse {
+            0% {
+                transform: scale(1);
+                opacity: .7;
+            }
+
+            70% {
+                transform: scale(1.8);
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .whatsapp-tooltip {
+            position: absolute;
+            right: 75px;
+            background: #0B3C5D;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: .3s;
+        }
+
+        .whatsapp-float:hover .whatsapp-tooltip {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        @media(max-width:768px) {
+            .whatsapp-float {
+                width: 58px;
+                height: 58px;
+                right: 20px;
+                bottom: 20px;
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+     
+    <nav class="navbar navbar-expand-lg sticky-top custom-navbar">
+        <div class="container">
+
+            <!-- Logo -->
+            <a class="navbar-brand" href="project.html">
+                <img src="https://www.sirisafety.in/img/sirislogo.png" alt="SIRIS Logo" class="logo">
+            </a>
+
+            <!-- Mobile Toggle -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            
+            <!-- Menu -->
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="project.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="About.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="service.html">Services</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="projectDropdown" role="button"
+                            data-bs-toggle="dropdown">
+                            Our Products
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="traffic.html">
+                                    Reliable Traffic &amp; Safety Products
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="contenar.html">
+                                    Container
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+
+                <div class="d-flex align-items-center ms-lg-4 gap-3 mt-lg-0">
+                    <img src="indiamart.png" alt="indiamart.png" height="70" width="130" style="object-fit:contain"
+                        onerror="this.style.display=''">
+                    <a href="https://www.sirisafety.in/upload/brocher.pdf" class="download-btn" download>
+                        <i class="fa-solid fa-download"></i> Download Brochure
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- =============================================
+         HERO
+    ============================================= -->
+    <section class="hero">
+        <div class="hero-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="#ffb703" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polygon
+                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+            </svg>
+        </div>
+
+        <h1>Transforming Containers <span> into Modern </span>Living Spaces.</h1>
+
+        <p>We specialize in converting high-quality shipping containers into elegant residential, commercial, and industrial spaces. Our focus is on innovative design, superior craftsmanship, and sustainable construction.</p>
+
+    </section>
+
+    <!-- OUR SERVICES -->
+     
+    <div class="section-header reveal">
+        <h2>Our Services</h2>
+        <p>End-to-end safety solutions designed for roads, industries, and infrastructure.</p>
+        <div class="section-divider"></div>
+    </div>
+
+    <div class="services-grid">
+
+        <!-- Card 1: Road Safety -->
+        <div class="service-card reveal d0">
+            <div class="card-visual">
+                <div class="card-visual-overlay"></div>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                    <polyline points="9 22 9 12 15 12 15 22" />
+                </svg>
+            </div>
+            <div class="card-body">
+                <h3>Road Safety Solutions</h3>
+                <p>Crash barriers, guardrails, road studs, delineators — engineered to protect motorists at every
+                    highway and intersection.</p>
+                <!-- <a href="#" class="card-link"> -->
+                    
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.5">
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <polyline points="12 5 19 12 12 19" />
+                    </svg>
+            
+            </div>
+        </div>
+
+        <!-- Card 2: Traffic Management -->
+        <div class="service-card reveal d1">
+            <div class="card-visual">
+                <div class="card-visual-overlay"></div>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="3" />
+                    <circle cx="12" cy="5" r="1.5" />
+                    <circle cx="12" cy="19" r="1.5" />
+                    <rect x="8" y="2" width="8" height="20" rx="2" />
+                </svg>
+            </div>
+            <div class="card-body">
+                <h3>Traffic Management</h3>
+                <p>Sign boards, variable message systems, traffic signals, and calming infrastructure for smooth urban
+                    flow.</p>
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.5">
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <polyline points="12 5 19 12 12 19" />
+                </svg>
+            </div>
+        </div>
+
+        <!-- Card 3: Industrial Safety -->
+        <div class="service-card reveal d2">
+            <div class="card-visual">
+                <div class="card-visual-overlay"></div>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 20h20" />
+                    <path d="M6 20V10l6-6 6 6v10" />
+                    <path d="M10 20v-5h4v5" />
+                </svg>
+            </div>
+            <div class="card-body">
+                <h3>Industrial Safety</h3>
+                <p>PPE, machine guarding, warehouse protection, and workplace safety solutions compliant with national
+                    standards.</p>
+                    
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.5">
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <polyline points="12 5 19 12 12 19" />
+                    </svg>
+            </div>
+        </div>
+
+        <!-- Card 4: Fire Safety -->
+        <div class="service-card reveal d3">
+            <div class="card-visual">
+                <div class="card-visual-overlay"></div>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                        d="M8.5 14.5A2.5 2.5 0 0011 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 002.5 2.5z" />
+                </svg>
+            </div>
+            <div class="card-body">
+                <h3>Fire Safety</h3>
+                <p>Fire extinguishers, suppression systems, alarms, emergency lighting, and evacuation planning.</p>
+             
+                    
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.5">
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <polyline points="12 5 19 12 12 19" />
+                    </svg>
+            </div>
+        </div>
+
+        <!-- Card 5: Installation -->
+        <div class="service-card reveal d4">
+            <div class="card-visual">
+                <div class="card-visual-overlay"></div>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                        d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" />
+                </svg>
+            </div>
+            <div class="card-body">
+                <h3>Installation &amp; Maintenance</h3>
+                <p>Professional on-site installation, commissioning, and Annual Maintenance Contracts for all safety
+                    equipment.</p>
+                    
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.5">
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                    </svg>
+            </div>
+        </div>
+
+        <!-- Card 6: Smart Safety -->
+        <div class="service-card reveal d5">
+            <div class="card-visual">
+                <div class="card-visual-overlay"></div>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M23 7l-7 5 7 5V7z" />
+                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+                </svg>
+            </div>
+            <div class="card-body">
+                <h3>Smart Safety Systems</h3>
+                <p>CCTV surveillance, ANPR cameras, AI-based traffic monitoring, and intelligent incident detection
+                    platforms.</p>
+                <a href="#" class="card-link">
+                    
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.5">
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <polyline points="12 5 19 12 12 19" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- =============================================
+         FEATURED SOLUTIONS
+    ============================================= -->
+    <section class="featured-section">
+        <div class="section-header reveal">
+            <div class="section-tag">Deep Dive</div>
+            <h2>Featured Solutions</h2>
+            <p>Hand-picked product lines trusted across highways, industrial zones, and smart cities.</p>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="featured-grid">
+
+            <!-- Road Safety -->
+            <div class="feature-box road reveal fd0">
+                <div class="box-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none"
+                        stroke="#0b2c5f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3" />
+                        <rect x="9" y="11" width="14" height="10" rx="2" />
+                        <circle cx="12" cy="20" r="1" />
+                        <circle cx="20" cy="20" r="1" />
+                    </svg>
+                </div>
+                <h3>Road Safety</h3>
+                <p class="feature-tagline">Barriers, studs &amp; signage for highways</p>
+                <div class="feature-list">
+                    <div class="feature-item"><span class="feature-dot"></span>W-Beam Crash Barriers</div>
+                    <div class="feature-item"><span class="feature-dot"></span>Guard Rails</div>
+                    <div class="feature-item"><span class="feature-dot"></span>Solar Road Studs</div>
+                    <div class="feature-item"><span class="feature-dot"></span>Reflective Sign Boards</div>
+                    <div class="feature-item"><span class="feature-dot"></span>Speed Breakers</div>
+                    <div class="feature-item"><span class="feature-dot"></span>Convex Mirrors</div>
+                </div>
+            </div>
+
+            <!-- Industrial Safety -->
+            <div class="feature-box industry reveal fd1">
+                <div class="box-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none"
+                        stroke="#ff6600" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg>
+                </div>
+                <h3>Industrial Safety</h3>
+                <p class="feature-tagline">PPE &amp; workplace protection gear</p>
+                <div class="feature-list">
+                    <div class="feature-item"><span class="feature-dot"></span>Safety Helmets &amp; Gloves</div>
+                    <div class="feature-item"><span class="feature-dot"></span>Reflective Jackets</div>
+                    <div class="feature-item"><span class="feature-dot"></span>Safety Shoes</div>
+                    <div class="feature-item"><span class="feature-dot"></span>Fire Safety Equipment</div>
+                    <div class="feature-item"><span class="feature-dot"></span>Warehouse Protection</div>
+                    <div class="feature-item"><span class="feature-dot"></span>Lockout / Tagout Systems</div>
+                </div>
+            </div>
+
+            <!-- Traffic Management -->
+            <div class="feature-box traffic reveal fd2">
+                <div class="box-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none"
+                        stroke="#00897b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="6" y="2" width="12" height="20" rx="2" />
+                        <circle cx="12" cy="7" r="1.5" fill="#00897b" />
+                        <circle cx="12" cy="12" r="1.5" fill="#00897b" />
+                        <circle cx="12" cy="17" r="1.5" fill="#00897b" />
+                    </svg>
+                </div>
+                <h3>Traffic Management</h3>
+                <p class="feature-tagline">Smart control for roads &amp; intersections</p>
+                <div class="feature-list">
+                    <div class="feature-item"><span class="feature-dot"></span>Traffic Cones &amp; Delineators</div>
+                    <div class="feature-item"><span class="feature-dot"></span>Rumble Strips</div>
+                    <div class="feature-item"><span class="feature-dot"></span>Road Marking Paint</div>
+                    <div class="feature-item"><span class="feature-dot"></span>Portable Barriers</div>
+                    <div class="feature-item"><span class="feature-dot"></span>VMS Boards</div>
+                    <div class="feature-item"><span class="feature-dot"></span>Lane Separator Posts</div>
+                </div>
+            </div>
+
+            <!-- Safety Training -->
+            <div class="feature-box training reveal fd3">
+                <div class="box-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none"
+                        stroke="#6c3fc5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                        <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                    </svg>
+                </div>
+                <h3>Training &amp; Consultancy</h3>
+                <p class="feature-tagline">Certified programs &amp; site audits</p>
+                <div class="feature-list">
+                    <div class="feature-item"><span class="feature-dot"></span>On-site Safety Audits</div>
+                    <div class="feature-item"><span class="feature-dot"></span>NHAI Compliance Training</div>
+                    <div class="feature-item"><span class="feature-dot"></span>First Aid Workshops</div>
+                    <div class="feature-item"><span class="feature-dot"></span>Fire Drill Programmes</div>
+                    <div class="feature-item"><span class="feature-dot"></span>Safety Officer Courses</div>
+                    <div class="feature-item"><span class="feature-dot"></span>Risk Assessment Reports</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://api.whatsapp.com/send/?phone=9767928649&text=Hello%20I%20am%20interested%20in%20your%20products&type=phone_number&app_absent=0"
+        class="whatsapp-float" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span class="whatsapp-tooltip">Chat with us</span>
+    </a>
+
+    <!-- =============================================
+         FOOTER  (from home page)
+    ============================================= -->
+    <footer>
+
+        <div class="footer-box">
+            <h3>SiriSafety</h3>
+            <p>
+                We provide reliable road safety, industrial safety, traffic management,
+                and smart security solutions for safer roads and workplaces.
+            </p>
+            <div class="social-icons">
+                <i class="fa-brands fa-facebook-f"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-linkedin-in"></i>
+            </div>
+        </div>
+
+        <div class="footer-box">
+            <h3>Quick Links</h3>
+            <a href="project.html">Home</a>
+            <a href="About.html">About</a>
+            <a href="service.html">Services</a>
+            <a href="contenar.html">Products</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+        <div class="footer-box">
+            <h3>Our Services</h3>
+            <a href="#">Road Safety</a>
+            <a href="#">Industrial Safety</a>
+            <a href="#">Traffic Management</a>
+            <a href="#">Fire Safety</a>
+            <a href="#">Installation</a>
+        </div>
+
+        <div class="footer-box">
+            <h3>Contact</h3>
+            <p><i class="fa-solid fa-phone"></i> +91 97679 28649</p>
+            <p><i class="fa-solid fa-envelope"></i> sales@sirisafety.in</p>
+            <p><i class="fa-solid fa-location-dot"></i> Nashik, Maharashtra</p>
+        </div>
+<div class="footer-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.5795002444333!2d73.6731926!3d19.984178800000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdded0052dc0b8b%3A0x4bda3cc1480befc5!2sAwesome%20Agrotech.%20Pvt.%20Ltd.%20Nashik!5e0!3m2!1sen!2sin!4v1785402351717!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin">
+        </iframe> loading="lazy" allowfullscreen>
+      </div>
+    </div>
+    </footer>
+
+    <div class="copyright">
+        &copy; 2026 SiriSafety. All Rights Reserved.
+    </div>
+
+    
+
+    <!-- =============================================
+         JAVASCRIPT
+    ============================================= -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        /* ---- Scroll Reveal (Intersection Observer) ---- */
+        const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-scale');
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    io.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -36px 0px' });
+
+        revealEls.forEach(el => io.observe(el));
+
+        /* ---- Animated counter for hero stats ---- */
+        function animateCounter(el) {
+            const target = parseInt(el.dataset.target, 10);
+            const duration = 1600;
+            const start = performance.now();
+            const step = (now) => {
+                const progress = Math.min((now - start) / duration, 1);
+                const ease = 1 - Math.pow(1 - progress, 3);
+                el.textContent = Math.floor(ease * target) + (progress === 1 ? '+' : '');
+                if (progress < 1) requestAnimationFrame(step);
+            };
+            requestAnimationFrame(step);
+        }
+
+        setTimeout(() => {
+            document.querySelectorAll('.stat-num[data-target]').forEach(animateCounter);
+        }, 800);
+    </script>
+
+</body>
+
+</html>
