@@ -1,6 +1,6 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-<style>
+    <style>
         .custom-navbar {
             background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(15px);
@@ -27,7 +27,6 @@
         }
 
         @keyframes borderMove {
-
             from {
                 background-position: 0%;
             }
@@ -35,7 +34,6 @@
             to {
                 background-position: 300%;
             }
-
         }
 
         .logo {
@@ -45,9 +43,7 @@
         }
 
         .logo:hover {
-            transform: scale(1.08) rotate(-3deg);
             filter: drop-shadow(0 10px 20px rgba(255, 102, 0, .35));
-
         }
 
         .navbar-nav {
@@ -134,29 +130,20 @@
         }
 
         .download-btn:hover {
-
             background: #003366;
-
             color: white;
-
             transform: translateY(-4px);
-
             box-shadow: 0 15px 30px rgba(0, 51, 102, .35);
 
         }
 
         .navbar-toggler {
-
             border: none;
-
             box-shadow: none !important;
-
         }
 
         .navbar-toggler:focus {
-
             box-shadow: none;
-
         }
 
         .custom-navbar {
@@ -172,14 +159,12 @@
                 opacity: 1;
                 transform: translateY(0);
             }
-
         }
 
         @media(max-width:991px) {
             .logo {
                 width: 150px;
             }
-
             .navbar-collapse {
                 margin-top: 20px;
                 padding: 20px;
@@ -187,11 +172,9 @@
                 background: white;
                 box-shadow: 0 10px 25px rgba(0, 0, 0, .08);
             }
-
             .navbar-nav {
                 gap: 8px;
             }
-
             .download-btn {
                 margin-top: 15px;
                 margin-left: 0;
@@ -202,7 +185,7 @@
 </head>
 
 <body>
- <nav class="navbar navbar-expand-lg sticky-top custom-navbar">
+    <nav class="navbar navbar-expand-lg sticky-top custom-navbar">
         <div class="container">
 
             <!-- Logo -->
@@ -222,13 +205,13 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav align-items-lg-center">
                     <li class="nav-item">
-                        <a class="nav-link active" href="{% url 'Home' %}">Home</a>
+                        <a class="nav-link active" href="{% url 'index' %}">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'About' %}">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'services' %}">Services</a>
+                        <a class="nav-link" href="service.html">Services</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="projectDropdown" role="button"
@@ -237,24 +220,21 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a class="dropdown-item" href="Reliable Traffic & Safety Products.html">
+                                <a class="dropdown-item" href="{% url 'traffic' %}">
                                     Reliable Traffic &amp; Safety Products
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="container.html">
+                                <a class="dropdown-item" href="{% url 'contaner1' %}">
                                     Container
                                 </a>
                             </li>
                         </ul>
                     </li>
-
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
+                        <a class="nav-link" href="{% url 'contact' %}">Contact</a>
                     </li>
-
                 </ul>
-
                 <div class="d-flex align-items-center ms-lg-4">
                     <img src="C:\Users\Welcome\Pictures\Screenshots\Screenshot 2026-07-21 010643.png"
                         alt="IndiaMART TrustSEAL" class="trust-logo">
@@ -266,8 +246,6 @@
             </div>
         </div>
     </nav>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
