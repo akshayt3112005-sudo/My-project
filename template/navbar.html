@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg sirisafety-navbar">
+    <div class="container-fluid">
+
+        <!-- Logo -->
+        <a class="navbar-brand sirisafety-logo" href="{% url 'project' %}">
+            <img src="{% static 'img/logo.png' %}" alt="Siris Logo">
+        </a>
+
+        <!-- Mobile Toggle -->
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarContent"
+                aria-controls="navbarContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar Content -->
+        <div class="collapse navbar-collapse" id="navbarContent">
+
+            <!-- Menu -->
+            <ul class="navbar-nav sirisafety-menu">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'project' %}">
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'About' %}">
+                        About
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'services' %}">
+                        Services
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'traffic' %}">
+                        Our Products
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contact' %}">
+                        Contact
+                    </a>
+                </li>
+
+            </ul>
+
+            <!-- Right Side -->
+            <div class="navbar-right">
+
+                <!-- IndiaMART -->
+                <div class="trust-seal">
+                    <div class="indiamart">
+                        IndiaMART
+                    </div>
+                    <div class="trust-text">
+                        TrustSEAL
+                    </div>
+                </div>
+
+                <!-- Brochure Button -->
+                <a href="{% static 'files/brochure.pdf' %}"
+                   class="brochure-btn"
+                   download>
+                    <i class="fa-solid fa-download"></i>
+                    Download Brochure
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+</nav>
+
+</body>
+{% block content %}
+
+{% endblock %}
+</html>

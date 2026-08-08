@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+</head>
+<body>
+    <footer>
+    <div class="footer-box reveal">
+      <h3>SiriSafety</h3>
+      <p>We provide reliable road safety, industrial safety, traffic management, and smart security solutions for safer
+        roads and workplaces.</p>
+      <div class="social-icons">
+        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-box reveal" style="transition-delay:.1s">
+      <h3>Quick Links</h3>
+      <a style="color: white; text-decoration:none" href="{% url 'project' %}">Home</a>
+      <a style="color: white; text-decoration:none" href="{% url 'About' %}">About</a>
+      <a style="color: white; text-decoration:none" href="{% url 'service' %}">Services</a>
+      <a style="color: white; text-decoration:none" href="{% url 'traffic' %}">Products</a>
+      <a style="color: white; text-decoration:none" href="{% url 'contact' %}">Contact</a>
+    </div>
+
+    <div class="footer-box reveal" style="transition-delay:.2s">
+      <h3>Our Services</h3>
+      <a style="color: white; text-decoration:none" href="#">Road Safety</a>
+      <a style="color: white; text-decoration:none" href="#">Industrial Safety</a>
+      <a style="color: white; text-decoration:none" href="#">Traffic Management</a>
+      <a style="color: white; text-decoration:none" href="#">Fire Safety</a>
+      <a style="color: white; text-decoration:none" href="#">Installation</a>
+    </div>
+
+    <div class="footer-box reveal" style="transition-delay:.3s">
+      <h3>Contact</h3>
+      <p><i class="fa-solid fa-phone"></i> +91 97679 28649</p>
+      <p><i style="color: white; text-decoration:none" class="fa-solid fa-envelope"></i> sales@sirisafety.in</p>
+      <p><i style="color: white; text-decoration:none" class="fa-solid fa-location-dot"></i> Nashik, Maharashtra</p>
+    </div>
+<div class="footer-box reveal">
+    <h3>Our Location</h3>
+
+    <div class="footer-map">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.5795002444333!2d73.6731926!3d19.984178800000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdded0052dc0b8b%3A0x4bda3cc1480befc5!2sAwesome%20Agrotech.%20Pvt.%20Ltd.%20Nashik!5e0!3m2!1sen!2sin!4v1785402351717!5m2!1sen!2sin"
+            width="200"
+            height="200"
+            style="border:0;"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin">
+        </iframe>
+    </div>
+</div>
+    
+  </footer>
+</body>
+</html>
