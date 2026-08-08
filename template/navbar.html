@@ -2,96 +2,250 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIRIS Safety</title>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .custom-navbar {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 20px 0;
+            transition: all .4s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, .08);
+            position: relative;
+            z-index: 999;
+        }
+
+        .custom-navbar:hover {
+            box-shadow: 0 15px 35px rgba(0, 0, 0, .12);
+        }
+
+        @keyframes borderMove {
+            from {
+                background-position: 0%;
+            }
+
+            to {
+                background-position: 300%;
+            }
+        }
+
+        .logo {
+            width: 180px;
+            transition: .5s;
+            cursor: pointer;
+        }
+
+        .logo:hover {
+            filter: drop-shadow(0 10px 20px rgba(255, 102, 0, .35));
+        }
+
+        .navbar-nav {
+            gap: 12px;
+        }
+
+        .navbar-nav .nav-link {
+            color: #003366 !important;
+            font-weight: 600;
+            padding: 10px 18px !important;
+            border-radius: 30px;
+            position: relative;
+            transition: 0.35s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #003366 !important;
+            background: rgba(0, 51, 102, 0.08);
+            transform: translateY(-3px);
+        }
+
+        .navbar-nav .nav-link.active {
+            color: #003366 !important;
+            background: rgba(0, 51, 102, 0.12);
+        }
+
+        .navbar-nav .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 6px;
+            width: 0;
+            height: 2px;
+            background: rgb(44, 33, 89);
+            transform: translateX(-50%);
+            transition: .3s;
+
+        }
+
+        .navbar-nav .nav-link:hover::after {
+            width: 60%;
+        }
+
+        .dropdown-menu {
+            border: none;
+            border-radius: 15px;
+            padding: 10px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, .12);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            display: block;
+            transition: .35s;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            border-radius: 10px;
+            padding: 10px 15px;
+            transition: .3s;
+        }
+
+        .dropdown-item:hover {
+            background: #ff6600;
+            color: white;
+            transform: translateX(6px);
+        }
+
+        .download-btn {
+            margin-left: 25px;
+            background: #ff6600;
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            transition: .35s;
+
+        }
+
+        .download-btn:hover {
+            background: #003366;
+            color: white;
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px rgba(0, 51, 102, .35);
+
+        }
+
+        .navbar-toggler {
+            border: none;
+            box-shadow: none !important;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        .custom-navbar {
+            animation: slideDown .8s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-70px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media(max-width:991px) {
+            .logo {
+                width: 150px;
+            }
+            .navbar-collapse {
+                margin-top: 20px;
+                padding: 20px;
+                border-radius: 15px;
+                background: white;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, .08);
+            }
+            .navbar-nav {
+                gap: 8px;
+            }
+            .download-btn {
+                margin-top: 15px;
+                margin-left: 0;
+                display: inline-block;
+            }
+        }
+    </style>
 </head>
+
 <body>
-<nav class="navbar navbar-expand-lg sirisafety-navbar">
-    <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg sticky-top custom-navbar">
+        <div class="container">
 
-        <!-- Logo -->
-        <a class="navbar-brand sirisafety-logo" href="{% url 'project' %}">
-            <img src="{% static 'img/logo.png' %}" alt="Siris Logo">
-        </a>
+            <!-- Logo -->
+            <a class="navbar-brand" href="project.html">
+                <img src="C:\Users\Welcome\Pictures\Screenshots\Screenshot 2026-07-21 000406.png" alt="SIRIS Logo"
+                    class="logo">
+            </a>
 
-        <!-- Mobile Toggle -->
-        <button class="navbar-toggler" type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarContent"
-                aria-controls="navbarContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+            <!-- Mobile Toggle -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
 
-        <!-- Navbar Content -->
-        <div class="collapse navbar-collapse" id="navbarContent">
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
 
             <!-- Menu -->
-            <ul class="navbar-nav sirisafety-menu">
-
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'project' %}">
-                        Home
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'index' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'About' %}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'service' %}">Services</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="projectDropdown" role="button"
+                            data-bs-toggle="dropdown">
+                            Our Products
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="{% url 'traffic' %}">
+                                    Reliable Traffic &amp; Safety Products
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{% url 'contaner1' %}">
+                                    Container
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center ms-lg-4">
+                    <img src="C:\Users\Welcome\Pictures\Screenshots\Screenshot 2026-07-21 010643.png"
+                        alt="IndiaMART TrustSEAL" class="trust-logo">
+                    <a href="https://www.sirisafety.in/upload/brocher.pdf" class="download-btn" download>
+                        <i class="fa-solid fa-download"></i>
+                        Download Brochure
                     </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'About' %}">
-                        About
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link active" href="{% url 'services' %}">
-                        Services
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'traffic' %}">
-                        Our Products
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'contact' %}">
-                        Contact
-                    </a>
-                </li>
-
-            </ul>
-
-            <!-- Right Side -->
-            <div class="navbar-right">
-
-                <!-- IndiaMART -->
-                <div class="trust-seal">
-                    <div class="indiamart">
-                        IndiaMART
-                    </div>
-                    <div class="trust-text">
-                        TrustSEAL
-                    </div>
                 </div>
-
-                <!-- Brochure Button -->
-                <a href="{% static 'files/brochure.pdf' %}"
-                   class="brochure-btn"
-                   download>
-                    <i class="fa-solid fa-download"></i>
-                    Download Brochure
-                </a>
-
             </div>
-
         </div>
-    </div>
-</nav>
-
+    </nav>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-{% block content %}
-
-{% endblock %}
 </html>
