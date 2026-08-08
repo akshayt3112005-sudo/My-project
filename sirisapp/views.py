@@ -20,6 +20,7 @@ def contaner1(request):
     return render(request,'contaner1.html')
  
 def contaner2(request):
+    
     return render(request,'contaner2.html')
 
 def contact(request):
