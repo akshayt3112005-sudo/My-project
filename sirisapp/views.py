@@ -10,4 +10,5 @@ def About(request):
 def service(request):
     return render(request,'service.html')
 
- 
+def contaner(request):
+    return render(request,'contaner.html')

@@ -4,5 +4,6 @@ urlpatterns = [
     path('Home/',views.Home,name='Home'),
     path('About/',views.About,name='About'),
     path('service/',views.service,name='service'),
+    path('contaner/',views.contaner,name='contaner'),
     
 ]    
