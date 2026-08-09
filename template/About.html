@@ -1,22 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'navbar.html' %}
+{% load static %}
+{% block content %}
 
-<head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIRIS Safety</title>
 
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- AOS (Animate on Scroll) -->
-    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-    <!--) Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
+    
 
     <style>
         /* ─── ROOT & BASE ─── */
@@ -53,178 +44,7 @@
             transition: width .1s linear;
         }
 
-        /* ─── NAVBAR ─── */
-        .custom-navbar {
-            background: rgba(255, 255, 255, .92);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            padding: 18px 0;
-            transition: all .4s ease;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, .08);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            animation: slideDown .8s ease;
-        }
-
-        .custom-navbar.scrolled {
-            padding: 12px 0;
-            box-shadow: 0 10px 35px rgba(0, 0, 0, .15);
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-70px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .logo {
-            width: 180px;
-            transition: .5s;
-            cursor: pointer;
-        }
-
-        .logo:hover {
-            transform: scale(1.08) rotate(-3deg);
-            filter: drop-shadow(0 10px 20px rgba(255, 102, 0, .35));
-        }
-
-        .navbar-nav {
-            gap: 12px;
-        }
-
-        .navbar-nav .nav-link {
-            color: var(--blue) !important;
-            font-weight: 600;
-            padding: 10px 18px !important;
-            border-radius: 30px;
-            position: relative;
-            transition: .35s ease;
-        }
-
-        .navbar-nav .nav-link:hover {
-            background: rgba(0, 51, 102, .08);
-            transform: translateY(-3px);
-        }
-
-        .navbar-nav .nav-link::after {
-            content: "";
-            position: absolute;
-            left: 50%;
-            bottom: 6px;
-            width: 0;
-            height: 2px;
-            background: var(--blue);
-            transform: translateX(-50%);
-            transition: .3s;
-        }
-
-        .navbar-nav .nav-link:hover::after {
-            width: 60%;
-        }
-
-        .dropdown-menu {
-            border: none;
-            border-radius: 15px;
-            padding: 10px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, .12);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(20px);
-            display: block;
-            transition: .35s;
-        }
-
-        .dropdown:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .dropdown-item {
-            border-radius: 10px;
-            padding: 10px 15px;
-            transition: .3s;
-        }
-
-        .dropdown-item:hover {
-            background: var(--orange);
-            color: white;
-            transform: translateX(6px);
-        }
-
-        .download-btn {
-            margin-left: 25px;
-            background: var(--orange);
-            color: white;
-            text-decoration: none;
-
-            padding: 12px 24px;
-            border-radius: 40px;
-            font-weight: 600;
-            transition: .35s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .download-btn::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: rgba(255, 255, 255, .2);
-            transform: translateX(-100%);
-            transition: transform .4s ease;
-        }
-
-        .download-btn:hover::after {
-            transform: translateX(0);
-        }
-
-        .download-btn:hover {
-            background: var(--blue);
-            color: white;
-            transform: translateY(-4px);
-            box-shadow: 0 15px 30px rgba(0, 51, 102, .35);
-        }
-
-        .navbar-toggler {
-            border: none;
-            box-shadow: none !important;
-        }
-
-        .navbar-toggler:focus {
-            box-shadow: none;
-        }
-
-        @media(max-width:991px) {
-            .logo {
-                width: 150px;
-            }
-
-            .navbar-collapse {
-                margin-top: 20px;
-                padding: 20px;
-                border-radius: 15px;
-                background: white;
-                box-shadow: 0 10px 25px rgba(0, 0, 0, .08);
-            }
-
-            .navbar-nav {
-                gap: 8px;
-            }
-
-            .download-btn {
-                margin-top: 15px;
-                margin-left: 0;
-                display: inline-block;
-            }
-        }
+       
 
         /* ─── HERO BANNER ─── */
         .hero-banner {
@@ -1687,9 +1507,6 @@
             }
         }
     </style>
-</head>
-
-<body>
 
     <!-- Scroll Progress -->
     <div id="scroll-progress"></div>
@@ -1698,41 +1515,7 @@
     <button id="backToTop" title="Back to Top"><i class="fa-solid fa-chevron-up"></i></button>
 
     <!-- ─── NAVBAR ─── -->
-    <nav class="navbar navbar-expand-lg sticky-top custom-navbar" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="https://www.sirisafety.in/img/sirislogo.png" alt="SIRIS Logo" class="logo">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav align-items-lg-center">
-                    <li class="nav-item"><a class="nav-link" href="project.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="About.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="sevice.html">Services</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="projectDropdown" role="button"
-                            data-bs-toggle="dropdown">
-                            Our Products
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="traffic.html">Reliable Traffic &amp; Safety Products</a>
-                            </li>
-                            <li><a class="dropdown-item" href="contenar.html">Container</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                </ul>
-                <div class="d-flex align-items-center ms-lg-4 gap-3 mt-lg-0">
-                    <img src="indiamart.png" alt="IndiaMART" height="70" width="130" style="object-fit:contain">
-                    <a href="https://www.sirisafety.in/upload/brocher.pdf" class="download-btn" download>
-                        <i class="fa-solid fa-download me-2"></i>Download Brochure
-                    </a>
-                </div>
-            </div>
-        </div>
-    </nav>
+   
 
     <!-- WhatsApp Float -->
     <a href="https://api.whatsapp.com/send/?phone=9767928649&text=Hello+I+am+interested+in+your+products&type=phone_number&app_absent=0"
@@ -1764,9 +1547,9 @@
                                 <p>Premium portable office containers, security cabins and modular units — durable,
                                     customizable, and built to meet your evolving needs.</p>
                                 <nav class="pb-breadcrumb">
-                                    <a href="project.html"><i class="fa-solid fa-house me-1"></i> Home</a>
+                                    <a href="{% url 'index' %}"><i class="fa-solid fa-house me-1"></i> Home</a>
                                     <span class="pb-sep">/</span>
-                                    <span class="pb-cur">Container Solutions</span>
+                                    <a href="{% url 'contaner' %}"><span class="pb-cur">Container Solutions</span></a>
                                 </nav>
                             </div>
                         </div>
@@ -1775,17 +1558,17 @@
 
                 <!-- Slide 2 — Road Safety -->
                 <div class="carousel-item">
-                    <div class="pb-slide" style="background-image:url('roadsafety-hero-bg.jpg');">
-                        <div class="container">`
+                    <div class="pb-slide" style='background-image: url("{% static "image/roadsafety-hero-bg.png" %}");'>
+                        <div class="container">
                             <div class="pb-text-col">
                                 <div class="pb-tag"><i class="fa-solid fa-road"></i> Road Safety</div>
                                 <h1>Building Safer Roads.<br><span>Creating Better Spaces.</span></h1>
                                 <p>SIRIS delivers high-quality road safety and industrial solutions, committed to
                                     building safer roads and smarter spaces for a better tomorrow.</p>
                                 <nav class="pb-breadcrumb">
-                                    <a href="project.html"><i class="fa-solid fa-house me-1"></i> Home</a>
+                                    <a href="{% url 'index' %}"><i class="fa-solid fa-house me-1"></i> Home</a>
                                     <span class="pb-sep">/</span>
-                                    <span class="pb-cur">Road Safety</span>
+                                    <a href="{% url 'traffic' %}"><span class="pb-cur">Road Safety</span></a>
                                 </nav>
                             </div>
                         </div>
@@ -1811,7 +1594,9 @@
             <div class="row align-items-center">
                 <div class="col-lg-6" data-aos="fade-right" data-aos-duration="800">
                     <div class="about-img">
-                        <img src="https://th.bing.com/th/id/OIP.ES4jORN_mVyzcUR3TVCjyQHaFi?w=242&h=181&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="About SIRIS Safety" alt="About SIRIS Safety">
+                        <a href="{% url 'contaner' %}" >
+                        <img src="https://th.bing.com/th/id/OIP.ES4jORN_mVyzcUR3TVCjyQHaFi?w=242&h=181&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="About SIRIS Safety">
+                        </a>
                         <div class="experience-box">
                             <i class="fa-solid fa-droplet-slash"></i>
                             <h2>Leak Proof<br>Containers</h2>
@@ -1952,51 +1737,9 @@
     </section>
 
     <!-- ─── FOOTER ─── -->
-    <footer>
-        <div class="footer-box" data-aos="fade-up" data-aos-delay="0">
-            <h3>SiriSafety</h3>
-            <p>We provide reliable road safety, industrial safety, traffic management, and smart security solutions for
-                safer roads and workplaces.</p>
-            <div class="social-icons">
-                <i class="fa-brands fa-facebook-f"></i>
-                <i class="fa-brands fa-instagram"></i>
-                <i class="fa-brands fa-linkedin-in"></i>
-            </div>
-        </div>
-        <div class="footer-box" data-aos="fade-up" data-aos-delay="100">
-            <h3>Quick Links</h3>
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Products</a>
-            <a href="#">Contact</a>
-        </div>
-        <div class="footer-box" data-aos="fade-up" data-aos-delay="200">
-            <h3>Our Services</h3>
-            <a href="#">Road Safety</a>
-            <a href="#">Industrial Safety</a>
-            <a href="#">Traffic Management</a>
-            <a href="#">Fire Safety</a>
-            <a href="#">Installation</a>
-        </div>
-        <div class="footer-box" data-aos="fade-up" data-aos-delay="300">
-            <h3>Contact</h3>
-            <p><i class="fa-solid fa-phone"></i> +91 97679 28649</p>
-            <p><i class="fa-solid fa-envelope"></i> sales@sirisafety.in</p>
-            <p><i class="fa-solid fa-location-dot"></i> Nashik, Maharashtra</p>
-        </div>
+   
 
-        <div class="footer-map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.5795002444333!2d73.6731926!3d19.984178800000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdded0052dc0b8b%3A0x4bda3cc1480befc5!2sAwesome%20Agrotech.%20Pvt.%20Ltd.%20Nashik!5e0!3m2!1sen!2sin!4v1785402351717!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin">
-        </iframe> loading="lazy" allowfullscreen>
-      </div>
-    </div>
-    
-    </footer>
-
-    <div class="copyright">
-        &copy; 2026 SiriSafety. All Rights Reserved.
-    </div>
+   
 
     <!-- ─── SCRIPTS ─── -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
@@ -2134,6 +1877,8 @@ left:${e.clientX - rect.left - size / 2}px;
         window.addEventListener('scroll', animateExpCounter);
         animateExpCounter();
     </script>
-</body>
+    
 
-</html>
+ {% include 'footer.html' %}
+    {% endblock %}
+
