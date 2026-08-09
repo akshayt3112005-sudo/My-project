@@ -20,6 +20,9 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, .08);
             position: relative;
             z-index: 999;
+            position: sticky !important;
+             top: 0;
+            z-index: 9999;
         }
 
         .custom-navbar:hover {
@@ -30,7 +33,6 @@
             from {
                 background-position: 0%;
             }
-
             to {
                 background-position: 300%;
             }
@@ -190,7 +192,7 @@
 
             <!-- Logo -->
             <a class="navbar-brand" href="project.html">
-                <img src="C:\Users\Welcome\Pictures\Screenshots\Screenshot 2026-07-21 000406.png" alt="SIRIS Logo"
+                <img src="https://www.sirisafety.in/img/sirislogo.png" alt="SIRIS Logo"
                     class="logo">
             </a>
 
@@ -211,7 +213,7 @@
                         <a class="nav-link" href="{% url 'About' %}">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="service.html">Services</a>
+                        <a class="nav-link" href="{% url 'service' %}">Services</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="projectDropdown" role="button"
@@ -225,7 +227,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="{% url 'contaner1' %}">
+                                <a class="dropdown-item" href="{% url 'contaner' %}">
                                     Container
                                 </a>
                             </li>
