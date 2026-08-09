@@ -16,11 +16,10 @@ def navbar(request):
 def traffic(request):
     return render(request,'traffic.html')
 
-def contaner1(request):
-    return render(request,'contaner1.html')
+def contaner(request):
+    return render(request,'contaner.html')
  
 def contaner2(request):
-    
     return render(request,'contaner2.html')
 
 def contact(request):
