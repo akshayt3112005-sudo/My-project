@@ -1,3 +1,5 @@
+{% extends 'base.html' %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +20,7 @@
             position: relative;
             height: 520px;
             overflow: hidden;
-            background: url("traffic.jpg") center/cover no-repeat;
+            background: url("bg traffic.webp") center/cover no-repeat;
         }
 
 
@@ -139,39 +141,202 @@
 
         }
 
+        /* ===== WhatsApp Floating Button ===== */
 
         .whatsapp-float {
             position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 25px;
-            right: 25px;
+            width: 65px;
+            height: 65px;
+            right: 30px;
+            bottom: 30px;
 
             background: #25D366;
-            color: white;
+            color: #fff;
 
             border-radius: 50%;
-
             display: flex;
             justify-content: center;
             align-items: center;
 
-            font-size: 34px;
-
-            text-decoration: none;
-
-            box-shadow: 0 5px 15px rgba(0, 0, 0, .3);
-
-            transition: .3s ease;
+            font-size: 35px;
 
             z-index: 9999;
+            text-decoration: none;
+
+            box-shadow:
+                0 10px 25px rgba(37, 211, 102, .5);
+
+            animation: whatsappFloat 3s ease-in-out infinite;
+
+            transition: .4s;
         }
 
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            background: #1EBE5D;
-            color: white;
+
+        /* Pulse Ring */
+        .whatsapp-float::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 100%;
+            height: 100%;
+
+            background: #25D366;
+
+            border-radius: 50%;
+
+            z-index: -1;
+
+            animation: whatsappPulse 2s infinite;
+
         }
+
+
+        /* Icon */
+        .whatsapp-float i {
+
+            transition: .3s;
+
+        }
+
+
+
+        /* Hover */
+        .whatsapp-float:hover {
+
+            background: #128C7E;
+
+            transform: translateY(-8px) scale(1.1);
+
+            color: white;
+
+        }
+
+
+        .whatsapp-float:hover i {
+
+            transform: rotate(15deg);
+
+        }
+
+
+        /* Floating Animation */
+
+        @keyframes whatsappFloat {
+
+            0%,
+            100% {
+
+                transform: translateY(0);
+
+            }
+
+            50% {
+
+                transform: translateY(-12px);
+
+            }
+
+        }
+
+
+
+        /* Pulse Animation */
+
+        @keyframes whatsappPulse {
+
+
+            0% {
+
+                transform: scale(1);
+
+                opacity: .7;
+
+            }
+
+
+            70% {
+
+                transform: scale(1.8);
+
+                opacity: 0;
+
+            }
+
+
+            100% {
+
+                opacity: 0;
+
+            }
+
+        }
+
+
+
+        /* Tooltip */
+
+        .whatsapp-tooltip {
+
+
+            position: absolute;
+
+            right: 75px;
+
+            background: #0B3C5D;
+
+            color: white;
+
+            padding: 8px 15px;
+
+            border-radius: 20px;
+
+            font-size: 14px;
+
+            white-space: nowrap;
+
+            opacity: 0;
+
+            transform: translateX(20px);
+
+            transition: .3s;
+
+        }
+
+
+        .whatsapp-float:hover .whatsapp-tooltip {
+
+            opacity: 1;
+
+            transform: translateX(0);
+
+        }
+
+
+
+        /* Mobile */
+
+        @media(max-width:768px) {
+
+            .whatsapp-float {
+
+                width: 58px;
+
+                height: 58px;
+
+                right: 20px;
+
+                bottom: 20px;
+
+                font-size: 30px;
+
+            }
+
+        }
+
+
+
 
         /* ================= PRODUCT SECTION ================= */
 
@@ -180,8 +345,13 @@
             background: #f8f9fa;
         }
 
+        /* Left & Right Space */
         .product-section .container {
-            max-width: 98%;
+            width: 100%;
+            max-width: 1450px;
+            margin: auto;
+            padding-left: 40px;
+            padding-right: 40px;
         }
 
         /* ================= HEADING ================= */
@@ -221,10 +391,15 @@
 
         /* ================= PRODUCT GRID ================= */
 
+        .row.g-4 {
+            --bs-gutter-x: 2rem;
+            --bs-gutter-y: 2rem;
+        }
+
         .product-col {
-            flex: 0 0 20%;
-            max-width: 20%;
-            padding: 10px;
+            flex: 0 0 25%;
+            max-width: 25%;
+            padding: 0 12px;
         }
 
         /* ================= CARD ================= */
@@ -233,7 +408,6 @@
             background: #fff;
             border-radius: 20px;
             overflow: hidden;
-            width: 100%;
             height: 100%;
             transition: .4s;
             box-shadow: 0 8px 25px rgba(0, 0, 0, .12);
@@ -252,47 +426,45 @@
 
         .product-img img {
             width: 100%;
-            height: 240px;
+            height: 290px;
             object-fit: cover;
             transition: .5s;
         }
 
         .product-card:hover .product-img img {
-            transform: scale(1.15);
+            transform: scale(1.12);
         }
 
         /* ================= INFO ================= */
 
         .product-info {
-            padding: 20px;
+            padding: 22px;
             text-align: center;
         }
 
         .product-info h4 {
-            font-size: 20px;
+            font-size: 21px;
             font-weight: 600;
             color: #003366;
-            min-height: 55px;
+            min-height: 60px;
             margin-bottom: 18px;
         }
 
         .view-btn {
             width: 100%;
-            padding: 13px;
+            padding: 14px;
             border: none;
             border-radius: 40px;
             background: linear-gradient(135deg, #003366, #0b4b8f);
             color: #fff;
             font-size: 17px;
             font-weight: 600;
-            letter-spacing: .5px;
-            transition: .4s ease;
-            box-shadow: 0 10px 20px rgba(0, 51, 102, .25);
+            transition: .4s;
         }
 
         .view-btn:hover {
             color: #fff;
-            transform: translateY(-5px);
+            transform: translateY(-4px);
         }
 
         /* ================= RESPONSIVE ================= */
@@ -304,13 +476,18 @@
                 max-width: 25%;
             }
 
+            .product-section .container {
+                padding-left: 35px;
+                padding-right: 35px;
+            }
+
         }
 
         @media(max-width:992px) {
 
             .product-col {
-                flex: 0 0 33.33%;
-                max-width: 33.33%;
+                flex: 0 0 50%;
+                max-width: 50%;
             }
 
         }
@@ -322,8 +499,8 @@
                 max-width: 50%;
             }
 
-            .section-heading h2 {
-                font-size: 32px;
+            .product-img img {
+                height: 240px;
             }
 
         }
@@ -335,20 +512,63 @@
                 max-width: 100%;
             }
 
-            .section-heading h2 {
-                font-size: 28px;
+            .product-section .container {
+                padding-left: 20px;
+                padding-right: 20px;
             }
 
             .product-img img {
                 height: 220px;
             }
 
+            .section-heading h2 {
+                font-size: 30px;
+            }
+
         }
 
+        
+        .traffic-heading {
+            display: inline-block;
+            font-size: 48px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+
+            /* Animated Gradient */
+            background: linear-gradient(90deg,
+                    #0465f7,
+                    #0ac7f1,
+                    #00ff99,
+                    #157edb,
+                    #76d7e8);
+            background-size: 400% 100%;
+            background-position: 0%;
+
+            /* Text Gradient */
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            animation: textFlow 4s linear infinite;
+        }
+
+        @keyframes textFlow {
+            0% {
+                background-position: 0%;
+            }
+
+            100% {
+                background-position: 400%;
+            }
+        }
+
+        
     </style>
 
 <body>
- {% include 'navbar.html' %}
+
     <section class="hero-banner">
 
         <div class="container hero-container">
@@ -394,7 +614,7 @@
                         <img src="TRAFFIC CONE 750MM.jpg">
 
 
-                        <img class="img2" src="Plastic-Speed-Breaker 50mm.jpeg">
+                        <img class="img2" src="{ Plastic-Speed-Breaker 50mm.jpeg">
 
 
                     </div>
@@ -409,12 +629,20 @@
 
 
     </section>
+
+    <a href="https://api.whatsapp.com/send/?phone=9767928649&text=Hello+I+am+interested+in+your+products&type=phone_number&app_absent=0"
+        class="whatsapp-float" target="_blank">
+
+        <i class="fa-brands fa-whatsapp"></i>
+
+    </a>
     <section class="product-section">
         <div class="container">
 
-            <div class="section-heading reveal-up">
-                <h2>Premium <span>Traffic</span> Solutions</h2>
-                <div class="heading-line mt-2"></div>
+            <div class="text-center my-5">
+                <h2 class="traffic-heading">
+                    Premium Traffic Solutions
+                </h2>
             </div>
 
             <div class="row g-4">
@@ -427,7 +655,7 @@
                         </div>
                         <div class="product-info">
                             <h4>Plastic-Speed-Breaker 50mm</h4>
-                            <a href="product-details.html"><button class="view-btn">View Details</button></a>
+                            <a href="PlasticSpeedBreaker.html"><button class="view-btn">View Details</button></a>
                         </div>
                     </div>
                 </div>
@@ -440,7 +668,7 @@
                         </div>
                         <div class="product-info">
                             <h4>Rubber Speed Breaker 50MM</h4>
-                            <a href="product-details.html"><button class="view-btn">View Details</button></a>
+                            <a href="RubberSpeedBreaker.html"><button class="view-btn">View Details</button></a>
                         </div>
                     </div>
                 </div>
@@ -453,7 +681,7 @@
                         </div>
                         <div class="product-info">
                             <h4>Queue Manager</h4>
-                            <a href="product-details.html"><button class="view-btn">View Details</button></a>
+                            <a href="SSQueueManager.html"><button class="view-btn">View Details</button></a>
                         </div>
                     </div>
                 </div>
@@ -466,7 +694,7 @@
                         </div>
                         <div class="product-info">
                             <h4>TRAFFIC CONE 750MM</h4>
-                            <a href="product-details.html"><button class="view-btn">View Details</button></a>
+                            <a href="cone.html"><button class="view-btn">View Details</button></a>
                         </div>
                     </div>
                 </div>
@@ -479,7 +707,7 @@
                         </div>
                         <div class="product-info">
                             <h4>Plastic Safety Products</h4>
-                            <a href="product-details.html"><button class="view-btn">View Details</button></a>
+                            <a href="Plastic Safety Products.html"><button class="view-btn">View Details</button></a>
                         </div>
                     </div>
                 </div>
@@ -492,7 +720,7 @@
                         </div>
                         <div class="product-info">
                             <h4>Sand and Water Fillable Barricades</h4>
-                            <a href="product-details.html"><button class="view-btn">View Details</button></a>
+                            <a href="SandandWater.html"><button class="view-btn">View Details</button></a>
                         </div>
                     </div>
                 </div>
@@ -505,7 +733,7 @@
                         </div>
                         <div class="product-info">
                             <h4>METAL EXPANDABLE BARRIER</h4>
-                            <a href="product-details.html"><button class="view-btn">View Details</button></a>
+                            <a href="metal.html"><button class="view-btn">View Details</button></a>
                         </div>
                     </div>
                 </div>
@@ -518,7 +746,7 @@
                         </div>
                         <div class="product-info">
                             <h4>Trafic Mirrors</h4>
-                            <a href="product-details.html"><button class="view-btn">View Details</button></a>
+                            <a href="Trafic Mirrors.html"><button class="view-btn">View Details</button></a>
                         </div>
                     </div>
                 </div>
@@ -527,11 +755,11 @@
                 <div class="col product-col">
                     <div class="product-card">
                         <div class="product-img">
-                            <img src="Rubber Safety Products.png" alt="">
+                            <img src="kit.png" alt="">
                         </div>
                         <div class="product-info">
-                            <h4>Rubber Safety Products</h4>
-                            <a href="product-details.html"><button class="view-btn">View Details</button></a>
+                            <h4>Rubber Safety & Road Signages Products</h4>
+                            <a href="Rubber Road Signages.html"><button class="view-btn">View Details</button></a>
                         </div>
                     </div>
                 </div>
@@ -540,11 +768,11 @@
                 <div class="col product-col">
                     <div class="product-card">
                         <div class="product-img">
-                            <img src="Road Signages.jpg" alt="">
+                            <img src="g.png" alt="">
                         </div>
                         <div class="product-info">
-                            <h4>Road Signages</h4>
-                            <a href="product-details.html"><button class="view-btn">View Details</button></a>
+                            <h4>Wildlife Information Board</h4>
+                            <a href="Wildlife.html"><button class="view-btn">View Details</button></a>
                         </div>
                     </div>
                 </div>
@@ -557,7 +785,7 @@
                         </div>
                         <div class="product-info">
                             <h4>Complete Security Solution</h4>
-                            <a href="product-details.html"><button class="view-btn">View Details</button></a>
+                            <a href="Complete Security.html"><button class="view-btn">View Details</button></a>
                         </div>
                     </div>
                 </div>
@@ -570,7 +798,7 @@
                         </div>
                         <div class="product-info">
                             <h4>Attendance Solutions</h4>
-                            <a href="product-details.html"><button class="view-btn">View Details</button></a>
+                            <a href="Attendance.html"><button class="view-btn">View Details</button></a>
                         </div>
                     </div>
                 </div>
@@ -579,11 +807,11 @@
                 <div class="col product-col">
                     <div class="product-card">
                         <div class="product-img">
-                            <img src="Portable MS STOP Barricade 3.png" alt="">
+                            <img src="Portable MS STOP Barricade.png" alt="">
                         </div>
                         <div class="product-info">
                             <h4>Portable MS STOP Barricade </h4>
-                            <a href="product-details.html"><button class="view-btn">View Details</button></a>
+                            <a href="MS STOP.html"><button class="view-btn">View Details</button></a>
                         </div>
                     </div>
                 </div>
@@ -596,7 +824,7 @@
                         </div>
                         <div class="product-info">
                             <h4>MS Crowd Control Barricade</h4>
-                            <a href="product-details.html"><button class="view-btn">View Details</button></a>
+                            <a href="MS Crowd.html"><button class="view-btn">View Details</button></a>
                         </div>
                     </div>
                 </div>
@@ -609,7 +837,7 @@
                         </div>
                         <div class="product-info">
                             <h4>MS Garbage Trolley</h4>
-                            <a href="product-details.html"><button class="view-btn">View Details</button></a>
+                            <a href="Municipal Garbage.html"><button class="view-btn">View Details</button></a>
                         </div>
                     </div>
                 </div>
@@ -618,78 +846,23 @@
                 <div class="col product-col">
                     <div class="product-card">
                         <div class="product-img">
-                            <img src="Expandable Scissor Barrie.png" alt="">
+                            <img src="Mojo Barriers.png" alt="">
                         </div>
                         <div class="product-info">
-                            <h4>Expandable Scissor Barrie</h4>
-                            <a href="product-details.html"><button class="view-btn">View Details</button></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 17 -->
-                <div class="col product-col">
-                    <div class="product-card">
-                        <div class="product-img">
-                            <img src="9.png" alt="">
-                        </div>
-                        <div class="product-info">
-                            <h4>Anti Ram Road Blocker</h4>
-                            <a href="product-details.html"><button class="view-btn">View Details</button></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 18 -->
-                <div class="col product-col">
-                    <div class="product-card">
-                        <div class="product-img">
-                            <img src="g.png" alt="">
-                        </div>
-                        <div class="product-info">
-                            <h4>Wildlife Information Board</h4>
-                            <a href="product-details.html"><button class="view-btn">View Details</button></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 19 -->
-                <div class="col product-col">
-                    <div class="product-card">
-                        <div class="product-img">
-                            <img src="product19.jpg" alt="">
-                        </div>
-                        <div class="product-info">
-                            <h4>Container Office</h4>
-                            <a href="product-details.html"><button class="view-btn">View Details</button></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 20 -->
-                <div class="col product-col">
-                    <div class="product-card">
-                        <div class="product-img">
-                            <img src="product20.jpg" alt="">
-                        </div>
-                        <div class="product-info">
-                            <h4>Prefab Office Cabin</h4>
-                            <a href="product-details.html"><button class="view-btn">View Details</button></a>
+                            <h4>Mojo Barriers</h4>
+                            <a href="mojo.html"><button class="view-btn">View Details</button></a>
                         </div>
                     </div>
                 </div>
 
             </div>
+        </div>
     </section>
 
-{% block content %}
+ 
     {% endblock %}
-
-{% include 'footer.html' %}
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
-
 
 </html>
