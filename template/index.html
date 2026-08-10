@@ -791,6 +791,10 @@
       opacity: 0;
       visibility: hidden;
     }
+    html.loader-already-shown #page-loader {
+    display: none !important;
+}
+
 
 
     /* Logo */
@@ -888,7 +892,16 @@
       }
 
     }
+
+    
   </style>
+  <script>
+    if (sessionStorage.getItem("loaderShown") === "true") {
+        document.documentElement.classList.add("loader-already-shown");
+    }
+</script>
+
+</head>
 </head>
 
 <body>
@@ -1386,17 +1399,30 @@
   </script>
   <script>
     window.addEventListener("load", function () {
-      const loader = document.getElementById("page-loader");
 
-      // Keep the loader visible for 2 seconds
-      setTimeout(() => {
+    const loader = document.getElementById("page-loader");
+
+    // If loader was already shown, don't show it again
+    if (sessionStorage.getItem("loaderShown") === "true") {
+        loader.style.display = "none";
+        return;
+    }
+
+    // First visit - show loader for 2 seconds
+    setTimeout(() => {
+
         loader.classList.add("hidden");
 
+        // Remember that loader has been shown
+        sessionStorage.setItem("loaderShown", "true");
+
         setTimeout(() => {
-          loader.style.display = "none";
-        }, 800); // Fade-out animation
-      }, 2000); // <-- Change this value
-    });
+            loader.style.display = "none";
+        }, 800);
+
+    }, 2000);
+
+});
   </script>
 </body>
 </html>
