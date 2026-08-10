@@ -73,8 +73,11 @@ def luxuryvilla(request):
 def metal(request):
     return render(request, 'metal.html')
 
+def Mobile_Hospitals(request):
+    return render(request, 'Mobile_Hospitals.html')
+
 def Mobile_Office(request):
-    return render(request, 'Mobile Office.html')
+    return render(request, 'Mobile_Office.html')
 
 def mojo(request):
     return render(request, 'mojo.html')
@@ -123,7 +126,7 @@ def Portable_Toilet_Container(request):
     return render(request, 'Portable Toilet Container.html')
 
 def Reefer(request):
-    return render(request, 'Reffer.html')
+    return render(request, 'Reefer.html')
 
 def Restaurant_Container(request):
     return render(request, 'Restaurant Container.html')
@@ -160,4 +163,5 @@ def Trafic_Mirrors(request):
 
 def Wildlife(request):
     return render(request, 'Wildlife.html')
+
 
