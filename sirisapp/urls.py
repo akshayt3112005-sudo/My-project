@@ -25,6 +25,7 @@ urlpatterns = [
     path('Luxury_Modular_Site_Offices/', views.Luxury_Modular_Site_Offices, name='Luxury_Modular_Site_Offices'),
     path('luxuryvilla/', views.luxuryvilla, name='luxuryvilla'),
     path('metal/', views.metal, name='metal'),
+    path('Mobile_Hospitals/', views.Mobile_Hospitals, name='Mobile_Hospitals'),
     path('Mobile_Office/', views.Mobile_Office, name='Mobile_Office'),
     path('mojo/', views.mojo, name='mojo'),
     path('MS_Bunk_Bed_Container/', views.MS_Bunk_Bed_Container, name='MS_Bunk_Bed_Container'),
