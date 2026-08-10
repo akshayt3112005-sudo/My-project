@@ -1,9 +1,11 @@
+
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Traffic Cone – Siris Safety</title>
+  <title>Complete Security – Siris Safety</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet"
@@ -633,7 +635,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 <section class="page-banner">
 
     <!-- Background Image -->
-    <img src="b.jpg" alt="Banner" class="banner-img">
+    <img src="{% static 'image/b.jpg' %}" alt="Banner" class="banner-img">
+
 
     <!-- Overlay -->
     <div class="banner-overlay"></div>

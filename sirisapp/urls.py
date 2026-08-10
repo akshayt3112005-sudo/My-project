@@ -54,6 +54,6 @@ urlpatterns = [
     path('Trafic_Mirrors/', views.Trafic_Mirrors, name='Trafic_Mirrors'),
     path('Wildlife/', views.Wildlife, name='Wildlife'),
     
-
+    
 
 ]    

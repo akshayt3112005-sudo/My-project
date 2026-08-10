@@ -202,8 +202,8 @@
         <div class="container">
 
             <!-- Logo -->
-            <a class="navbar-brand" href="project.html">
-                <img src="https://www.sirisafety.in/img/sirislogo.png" alt="SIRIS Logo"
+            <a class="navbar-brand" href="{% url 'index' %}">
+                <img src="{% static 'image/sirislogo.png' %}" alt="SIRIS Logo"
                     class="logo">
             </a>
 
@@ -249,11 +249,10 @@
                     </li>
                 </ul>
                 <div class="d-flex align-items-center ms-lg-4">
-                    <img src="C:\Users\Welcome\Pictures\Screenshots\Screenshot 2026-07-21 010643.png"
-                        alt="IndiaMART TrustSEAL" class="trust-logo">
+                     <img src="{% static 'image/indiamart.png' %}" alt="indiamart.png" height="70" width="130" style="object-fit:contain"
+                        onerror="this.style.display=''">
                     <a href="https://www.sirisafety.in/upload/brocher.pdf" class="download-btn" download>
-                        <i class="fa-solid fa-download"></i>
-                        Download Brochure
+                        <i class="fa-solid fa-download"></i> Download Brochure
                     </a>
                 </div>
             </div>
