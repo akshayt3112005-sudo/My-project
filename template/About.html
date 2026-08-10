@@ -1,6 +1,7 @@
 {% extends 'navbar.html' %}
 {% load static %}
-{% block content %}
+{% block content %}{% static "image/roadsafety-hero-bg.png" as road_bg %}
+
 
 
     <meta charset="UTF-8">
@@ -1558,7 +1559,8 @@
 
                 <!-- Slide 2 — Road Safety -->
                 <div class="carousel-item">
-                    <div class="pb-slide" style='background-image: url("{% static "image/roadsafety-hero-bg.png" %}");'>
+                    <div class="pb-slide" style="background-image: url('{{ road_bg }}');">
+
                         <div class="container">
                             <div class="pb-text-col">
                                 <div class="pb-tag"><i class="fa-solid fa-road"></i> Road Safety</div>
@@ -1880,5 +1882,5 @@ left:${e.clientX - rect.left - size / 2}px;
     
 
  {% include 'footer.html' %}
-    {% endblock %}
 
+    {% endblock %}
