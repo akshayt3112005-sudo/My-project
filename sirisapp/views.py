@@ -115,6 +115,9 @@ def Mobile_Hospitals(request):
 def Mobile_Office(request):
     return render(request, 'Mobile_Office.html')
 
+def Modular_Office(request):
+    return render(request, 'Modular Office.html')
+
 def mojo(request):
     return render(request, 'mojo.html')
 
@@ -151,6 +154,9 @@ def PlasticSpeedBreaker(request):
 
 def Porta_Cabins(request):
     return render(request, 'Porta Cabins .html')
+
+def Portable_house(request):
+    return render(request, 'Portable_container_house.html')
 
 def Portable_Gym(request):
     return render(request, 'Portable Gym .html')
