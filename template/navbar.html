@@ -201,17 +201,17 @@
     <nav class="navbar navbar-expand-lg sticky-top custom-navbar">
         <div class="container">
 
-            <!-- Logo -->
-            <a class="navbar-brand" href="{% url 'index' %}">
-                <img src="{% static 'image/sirislogo.png' %}" alt="SIRIS Logo"
-                    class="logo">
-            </a>
+
+<!-- Logo -->
+<a class="navbar-brand" href="{% url 'index' %}">
+    <img src="https://www.sirisafety.in/img/sirislogo.png"
+         alt="SIRIS Logo"
+         class="logo">
+</a>
 
             <!-- Mobile Toggle -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-
                 <span class="navbar-toggler-icon"></span>
-
             </button>
 
             <!-- Menu -->
@@ -258,8 +258,10 @@
             </div>
         </div>
     </nav>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
-    {% block content %}
+{% block content %}
     {% endblock %}
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    
 </body>
 </html>
