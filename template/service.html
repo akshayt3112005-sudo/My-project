@@ -13,6 +13,10 @@
 
     <style>
         /* RESET & BASE */
+<<<<<<< HEAD
+=======
+
+>>>>>>> ca19f86 (new service and contact added)
         *,
         *::before,
         *::after {
@@ -40,7 +44,12 @@
             list-style: none;
         }
 
+<<<<<<< HEAD
         /* KEYFRAMES*/
+=======
+        /* KEYFRAMES */
+
+>>>>>>> ca19f86 (new service and contact added)
         @keyframes slideDown {
             from {
                 opacity: 0;
@@ -119,9 +128,8 @@
             }
         }
 
-        /* =============================================
-           SCROLL-REVEAL SYSTEM
-        ============================================= */
+        /* SCROLL-REVEAL SYSTEM */
+
         .reveal {
             opacity: 0;
             transform: translateY(44px);
@@ -213,160 +221,8 @@
             transition-delay: 200ms !important;
         }
 
-        /* =============================================
-           NAVBAR  (from home page)
-        ============================================= */
-        .custom-navbar {
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            padding: 20px 0;
-            transition: all .4s ease;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, .08);
-            position: sticky;
-            top: 0;
-            z-index: 999;
-            animation: slideDown .8s ease;
-        }
-
-        .custom-navbar:hover {
-            box-shadow: 0 15px 35px rgba(0, 0, 0, .12);
-        }
-
-        .logo {
-            width: 180px;
-            transition: .5s;
-            cursor: pointer;
-        }
-
-        .logo:hover {
-            transform: scale(1.08) rotate(-3deg);
-            filter: drop-shadow(0 10px 20px rgba(255, 102, 0, .35));
-        }
-
-        .navbar-nav {
-            gap: 12px;
-        }
-
-        .navbar-nav .nav-link {
-            color: #003366 !important;
-            font-weight: 600;
-            padding: 10px 18px !important;
-            border-radius: 30px;
-            position: relative;
-            transition: 0.35s ease;
-        }
-
-        .navbar-nav .nav-link:hover {
-            color: #003366 !important;
-            background: rgba(0, 51, 102, 0.08);
-            transform: translateY(-3px);
-        }
-
-        .navbar-nav .nav-link.active {
-            color: #003366 !important;
-            background: rgba(0, 51, 102, 0.12);
-        }
-
-        .navbar-nav .nav-link::after {
-            content: "";
-            position: absolute;
-            left: 50%;
-            bottom: 6px;
-            width: 0;
-            height: 2px;
-            background: rgb(44, 33, 89);
-            transform: translateX(-50%);
-            transition: .3s;
-        }
-
-        .navbar-nav .nav-link:hover::after,
-        .navbar-nav .nav-link.active::after {
-            width: 60%;
-        }
-
-        .dropdown-menu {
-            border: none;
-            border-radius: 15px;
-            padding: 10px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, .12);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(20px);
-            display: block;
-            transition: .35s;
-        }
-
-        .dropdown:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .dropdown-item {
-            border-radius: 10px;
-            padding: 10px 15px;
-            transition: .3s;
-        }
-
-        .dropdown-item:hover {
-            background: #ff6600;
-            color: white;
-            transform: translateX(6px);
-        }
-
-        .download-btn {
-            margin-left: 25px;
-            background: #ff6600;
-            color: white;
-            text-decoration: none;
-            padding: 12px 24px;
-            border-radius: 40px;
-            font-weight: 600;
-            transition: .35s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            white-space: nowrap;
-        }
-
-        .download-btn:hover {
-            background: #003366;
-            color: white;
-            transform: translateY(-4px);
-            box-shadow: 0 15px 30px rgba(0, 51, 102, .35);
-        }
-
-        .navbar-toggler {
-            border: none;
-            box-shadow: none !important;
-        }
-
-        .navbar-toggler:focus {
-            box-shadow: none;
-        }
-
-        @media(max-width:991px) {
-            .logo {
-                width: 150px;
-            }
-
-            .navbar-collapse {
-                margin-top: 20px;
-                padding: 20px;
-                border-radius: 15px;
-                background: white;
-                box-shadow: 0 10px 25px rgba(0, 0, 0, .08);
-            }
-
-            .navbar-nav {
-                gap: 8px;
-            }
-        }
-
         /*HERO*/
-        
+
         .hero {
             background: linear-gradient(135deg, #071b3a 0%, #0b2c5f 40%, #154b8a 70%, #1d5fb8 100%);
             padding: 70px 24px;
@@ -401,22 +257,6 @@
             pointer-events: none;
         }
 
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(255, 102, 0, 0.18);
-            border: 1px solid rgba(255, 102, 0, 0.35);
-            color: #ffb703;
-            font-size: 12.5px;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            padding: 6px 18px;
-            border-radius: 40px;
-            margin-bottom: 26px;
-            animation: fadeIn 0.6s ease 0.2s both;
-        }
 
         .hero h1 {
             font-size: clamp(32px, 5vw, 54px);
@@ -445,11 +285,12 @@
             line-height: 1.8;
             animation: fadeUp 0.7s ease 0.5s both;
         }
-        /* =SECTION HEADER */
+
+        /* SECTION HEADER */
 
         .section-header {
             text-align: center;
-            padding: 72px 24px 0;
+            padding: 45px 24px 0;
         }
 
         .section-tag {
@@ -488,515 +329,360 @@
             margin: 18px auto 0;
         }
 
-        
-/* ==========================
-   SERVICES GRID
-========================== */
 
-.services-grid{
-    max-width:1300px;
-    margin:60px auto;
-    padding:0 20px;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
-    gap:30px;
-}
+        /* SERVICES GRID */
 
-/* ==========================
-   CARD
-========================== */
-
-.service-card{
-    transition: all .4s ease;
-}
-
-.service-card:hover{
-    transform:translateY(-12px) scale(1.02);
-    box-shadow:0 18px 40px rgba(11,61,145,.18);
-    border-color:#1565c0;
-}
-.card-visual{
-    transition:.4s ease;
-}
-
-.card-visual svg{
-    transition:.4s ease;
-}
-
-.service-card:hover .card-visual{
-    background:#1565c0;
-}
-
-.service-card:hover .card-visual svg{
-    transform:scale(1.2) rotate(8deg);
-    stroke:#fff;
-    fill:#fff;
-}
-.service-card{
-    position:relative;
-    overflow:hidden;
-}
-
-.service-card::before{
-    content:"";
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:4px;
-    background:linear-gradient(90deg,#0b3d91,#42a5f5,#0b3d91);
-    transform:scaleX(0);
-    transform-origin:left;
-    transition:.4s;
-}
-
-.service-card:hover::before{
-    transform:scaleX(1);
-}
-.card-body p{
-    transition:.3s;
-}
-
-.service-card:hover p{
-    color:#444;
-}
-
-@keyframes floatIcon{
-    0%,100%{
-        transform:translateY(0);
-    }
-    50%{
-        transform:translateY(-6px);
-    }
-}
-
-.card-visual svg{
-    animation:floatIcon 3s ease-in-out infinite;
-}
-.service-card{
-    opacity:0;
-    transform:translateY(40px);
-    animation:cardFade .8s ease forwards;
-}
-
-.service-card:nth-child(1){animation-delay:.1s;}
-.service-card:nth-child(2){animation-delay:.2s;}
-.service-card:nth-child(3){animation-delay:.3s;}
-.service-card:nth-child(4){animation-delay:.4s;}
-.service-card:nth-child(5){animation-delay:.5s;}
-.service-card:nth-child(6){animation-delay:.6s;}
-
-@keyframes cardFade{
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-/* ==========================
-   ICON
-========================== */
-
-.card-visual{
-    width:100px;
-    height:100px;
-    margin:0 auto 30px;
-    background:#edf4ff;
-    border-radius:50%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-
-.card-visual svg{
-    width:48px;
-    height:48px;
-    stroke:#0b2c7d;
-    fill:#0b2c7d;
-}
-
-/* Remove gradient backgrounds */
-
-.grad-road,
-.grad-traffic,
-.grad-industry,
-.grad-fire,
-.grad-install,
-.grad-smart{
-    background:#edf4ff;
-}
-
-.card-visual::after,
-.card-visual-overlay{
-    display:none;
-}
-
-/* ==========================
-   TEXT
-========================== */
-
-.card-body{
-    padding:0;
-}
-
-.card-body h3{
-    font-size:20px;
-    font-weight:700;
-    color:#071b5c;
-    margin-bottom:18px;
-    line-height:1.4;
-    font-family:Georgia, serif;
-}
-
-.card-body p{
-    color:#666;
-    font-size:16px;
-    line-height:1.8;
-}
-.service-card{
-    background:#fff;
-    border:1px solid #e9edf5;
-    border-radius:6px;
-    text-align:center;
-    padding:45px 35px;
-    box-shadow:0 3px 12px rgba(0,0,0,.05);
-
-    position:relative;
-    overflow:hidden;
-
-    opacity:0;
-    transform:translateY(40px);
-    transition:all .4s ease;
-    animation:cardFade .8s ease forwards;
-}
-.card-body h3{
-    transition:.3s;
-}
-
-.service-card:hover h3{
-    color:#1565c0;
-}
-.service-card:hover .card-visual{
-    background:#1565c0;
-    box-shadow:0 0 25px rgba(21,101,192,.35);
-}
-.service-card:hover .card-visual svg{
-    animation:none;
-    transform:scale(1.2) rotate(8deg);
-}
-
-
-        /* =============================================
-           FEATURED SOLUTIONS
-        ============================================= */
-       .featured-section{
-    background:linear-gradient(to bottom,#f8fbff,#eef5ff);
-    padding:90px 24px;
-    position:relative;
-    overflow:hidden;
-}
-.featured-grid{
-    max-width:1200px;
-    margin:60px auto 0;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:28px;
-}
-.feature-box{
-    background:#fff;
-    border-radius:18px;
-    padding:35px 28px;
-    border:1px solid #dce8f8;
-    box-shadow:0 8px 30px rgba(13,71,161,.08);
-    transition:.4s ease;
-    position:relative;
-    overflow:hidden;
-}
-
-.feature-box:hover{
-    transform:translateY(-10px);
-    box-shadow:0 20px 45px rgba(13,71,161,.18);
-}
-.feature-box::before{
-    content:"";
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:5px;
-    background:linear-gradient(90deg,#0d47a1,#42a5f5,#1565c0);
-    transform:scaleX(0);
-    transform-origin:left;
-    transition:.5s;
-}
-
-.feature-box:hover::before{
-    transform:scaleX(1);
-}
-.feature-box::after{
-    content:"";
-    position:absolute;
-    width:170px;
-    height:170px;
-    border-radius:50%;
-    background:rgba(33,150,243,.05);
-    right:-60px;
-    bottom:-60px;
-}
-.box-icon{
-    width:70px;
-    height:70px;
-    border-radius:50%;
-    background:#edf5ff;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    color:#0d47a1;
-    margin-bottom:25px;
-    transition:.4s;
-}
-
-.feature-box:hover .box-icon{
-    background:#1565c0;
-    color:#fff;
-    transform:rotate(8deg) scale(1.1);
-}
-.feature-box h3{
-    font-size:22px;
-    font-weight:700;
-    color:#0b2c5f;
-    margin-bottom:10px;
-}
-
-.feature-box:hover h3{
-    color:#1565c0;
-}
-.feature-tagline{
-    color:#6c7a91;
-    font-size:14px;
-    margin-bottom:22px;
-    line-height:1.6;
-}
-.feature-list{
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-}
-.feature-item{
-    background:#f5f9ff;
-    border:1px solid #e6eefb;
-    border-radius:10px;
-    padding:12px 15px;
-    font-size:14px;
-    color:#4a5568;
-    transition:.3s;
-}
-
-.feature-item:hover{
-    background:#e9f3ff;
-    transform:translateX(8px);
-}
-.feature-dot{
-    width:8px;
-    height:8px;
-    background:#1565c0;
-    border-radius:50%;
-}
-
-.feature-item:hover .feature-dot{
-    transform:scale(1.5);
-}
-
-
-        /* =============================================
-           FOOTER  (from home page)
-        ============================================= */
-
-        .footer-map {
-    width: 100%;
-    height: 180px;
-    border: none;
-    border-radius: 0px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-.footer-map iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
-    border-radius: 12px;
-}
-
-
-        footer {
-            background: linear-gradient(135deg, #0b2c5f, #154b8a, #1d5fb8);
-            color: #fff;
+        .services-grid {
+            max-width: 1300px;
+            margin: 35px auto 0;
+            padding: 0 20px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
-            padding: 45px 8% 30px;
-            position: relative;
-            overflow: hidden;
-            align-items: start;
         }
 
-        footer::before {
+        /* CARD */
+
+
+        .service-card {
+            transition: all .4s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 18px 40px rgba(11, 61, 145, .18);
+            border-color: #1565c0;
+        }
+
+        .card-visual {
+            transition: .4s ease;
+        }
+
+        .card-visual svg {
+            transition: .4s ease;
+        }
+
+        .service-card:hover .card-visual {
+            background: #1565c0;
+        }
+
+        .service-card:hover .card-visual svg {
+            transform: scale(1.2) rotate(8deg);
+            stroke: #fff;
+            fill: #fff;
+        }
+
+        .service-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
             content: "";
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, #ffb703, #ff6b00, #ffb703);
+            background: linear-gradient(90deg, #0b3d91, #42a5f5, #0b3d91);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: .4s;
         }
 
-        footer::after {
-            content: "";
-            position: absolute;
-            width: 320px;
-            height: 320px;
-            background: rgba(255, 255, 255, .04);
-            border-radius: 50%;
-            top: -150px;
-            right: -120px;
+        .service-card:hover::before {
+            transform: scaleX(1);
         }
 
-        .footer-box {
-            position: relative;
-            z-index: 2;
-        }
-
-        .footer-box h3 {
-            font-size: 22px;
-            margin-bottom: 18px;
-            font-weight: 600;
-            position: relative;
-            display: inline-block;
-        }
-
-        .footer-box h3::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: -6px;
-            width: 50px;
-            height: 3px;
-            background: #ffb703;
-            border-radius: 20px;
-        }
-
-        .footer-box p {
-            color: #d8e4f5;
-            font-size: 15px;
-            line-height: 1.7;
-            margin-bottom: 10px;
-        }
-
-        .footer-box a {
-            display: block;
-            color: #d8e4f5;
-            text-decoration: none;
-            margin-bottom: 10px;
+        .card-body p {
             transition: .3s;
-            font-size: 15px;
         }
 
-        .footer-box a:hover {
-            color: #ffb703;
-            transform: translateX(6px);
+        .service-card:hover p {
+            color: #444;
         }
 
-        .footer-box .fa-solid {
-            color: #ffb703;
-            margin-right: 10px;
-            width: 20px;
+        @keyframes floatIcon {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
         }
 
-        .social-icons {
-            display: flex;
-            gap: 12px;
-            margin-top: 18px;
+        .card-visual svg {
+            animation: floatIcon 3s ease-in-out infinite;
         }
 
-        .social-icons i {
-            width: 42px;
-            height: 42px;
+        .service-card {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: cardFade .8s ease forwards;
+        }
+
+        .service-card:nth-child(1) {
+            animation-delay: .1s;
+        }
+
+        .service-card:nth-child(2) {
+            animation-delay: .2s;
+        }
+
+        .service-card:nth-child(3) {
+            animation-delay: .3s;
+        }
+
+        .service-card:nth-child(4) {
+            animation-delay: .4s;
+        }
+
+        .service-card:nth-child(5) {
+            animation-delay: .5s;
+        }
+
+        .service-card:nth-child(6) {
+            animation-delay: .6s;
+        }
+
+        @keyframes cardFade {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ICON */
+
+        .card-visual {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 30px;
+            background: #edf4ff;
             border-radius: 50%;
-            background: rgba(255, 255, 255, .12);
             display: flex;
             justify-content: center;
             align-items: center;
-            cursor: pointer;
-            transition: .35s;
-            font-size: 18px;
         }
 
-        .social-icons i:hover {
-            background: #ffb703;
-            color: #0b2c5f;
-            transform: translateY(-5px);
-            box-shadow: 0 8px 18px rgba(255, 183, 3, .4);
+        .card-visual svg {
+            width: 48px;
+            height: 48px;
+            stroke: #0b2c7d;
+            fill: #0b2c7d;
         }
 
-        .copyright {
-            background: #071b3a;
-            color: #d8e4f5;
+        /* Remove gradient backgrounds */
+
+        .grad-road,
+        .grad-traffic,
+        .grad-industry,
+        .grad-fire,
+        .grad-install,
+        .grad-smart {
+            background: #edf4ff;
+        }
+
+        .card-visual::after,
+        .card-visual-overlay {
+            display: none;
+        }
+
+        /* TEXT */
+
+
+        .card-body {
+            padding: 0;
+        }
+
+        .card-body h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #071b5c;
+            margin-bottom: 18px;
+            line-height: 1.4;
+            font-family: Georgia, serif;
+        }
+
+        .card-body p {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .service-card {
+            background: #fff;
+            border: 1px solid #e9edf5;
+            border-radius: 6px;
             text-align: center;
-            padding: 18px;
-            font-size: 15px;
-            border-top: 1px solid rgba(255, 255, 255, .15);
+            padding: 45px 35px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, .05);
+
+            position: relative;
+            overflow: hidden;
+
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all .4s ease;
+            animation: cardFade .8s ease forwards;
         }
 
-        @media(max-width:992px) {
-            footer {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 25px;
-                padding: 40px 6%;
-            }
+        .card-body h3 {
+            transition: .3s;
         }
 
-        @media(max-width:768px) {
-            footer {
-                grid-template-columns: 1fr;
-                text-align: center;
-                padding: 35px 25px;
-            }
-
-            .footer-box h3::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-
-            .social-icons {
-                justify-content: center;
-            }
+        .service-card:hover h3 {
+            color: #1565c0;
         }
 
-        @media(max-width:480px) {
-            .footer-box h3 {
-                font-size: 20px;
-            }
-
-            .footer-box p,
-            .footer-box a {
-                font-size: 14px;
-            }
-
-            .social-icons i {
-                width: 38px;
-                height: 38px;
-                font-size: 16px;
-            }
-
-            .copyright {
-                font-size: 14px;
-                padding: 15px;
-            }
+        .service-card:hover .card-visual {
+            background: #1565c0;
+            box-shadow: 0 0 25px rgba(21, 101, 192, .35);
         }
 
-        /* =============================================
-           RESPONSIVE (hero / services)
-        ============================================= */
+        .service-card:hover .card-visual svg {
+            animation: none;
+            transform: scale(1.2) rotate(8deg);
+        }
+
+
+        /* FEATURED SOLUTIONS*/
+
+        .featured-section {
+            background: linear-gradient(to bottom, #f8fbff, #eef5ff);
+            padding: 0 24px 90px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-grid {
+            max-width: 1200px;
+            margin: 60px auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 28px;
+        }
+
+        .feature-box {
+            background: #fff;
+            border-radius: 18px;
+            padding: 35px 28px;
+            border: 1px solid #dce8f8;
+            box-shadow: 0 8px 30px rgba(13, 71, 161, .08);
+            transition: .4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 45px rgba(13, 71, 161, .18);
+        }
+
+        .feature-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #0d47a1, #42a5f5, #1565c0);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: .5s;
+        }
+
+        .feature-box:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-box::after {
+            content: "";
+            position: absolute;
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            background: rgba(33, 150, 243, .05);
+            right: -60px;
+            bottom: -60px;
+        }
+
+        .box-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: #edf5ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #0d47a1;
+            margin-bottom: 25px;
+            transition: .4s;
+        }
+
+        .feature-box:hover .box-icon {
+            background: #1565c0;
+            color: #fff;
+            transform: rotate(8deg) scale(1.1);
+        }
+
+        .feature-box h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #0b2c5f;
+            margin-bottom: 10px;
+        }
+
+        .feature-box:hover h3 {
+            color: #1565c0;
+        }
+
+        .feature-tagline {
+            color: #6c7a91;
+            font-size: 14px;
+            margin-bottom: 22px;
+            line-height: 1.6;
+        }
+
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .feature-item {
+            background: #f5f9ff;
+            border: 1px solid #e6eefb;
+            border-radius: 10px;
+            padding: 12px 15px;
+            font-size: 14px;
+            color: #4a5568;
+            transition: .3s;
+        }
+
+        .feature-item:hover {
+            background: #e9f3ff;
+            transform: translateX(8px);
+        }
+
+        .feature-dot {
+            width: 8px;
+            height: 8px;
+            background: #1565c0;
+            border-radius: 50%;
+        }
+
+        .feature-item:hover .feature-dot {
+            transform: scale(1.5);
+        }
+
+        /* RESPONSIVE (hero / services) */
+
+
+
         @media (max-width: 768px) {
             .hero {
                 padding: 72px 20px;
@@ -1033,9 +719,9 @@
             }
         }
 
-        /* =============================================
-           PREFERS REDUCED MOTION
-        ============================================= */
+        /* PREFERS REDUCED MOTION*/
+
+
         @media (prefers-reduced-motion: reduce) {
 
             *,
@@ -1053,9 +739,8 @@
             }
         }
 
-        /* =============================================
-           WHATSAPP FLOATING BUTTON
-        ============================================= */
+        /* WHATSAPP FLOATING BUTTON */
+
         .whatsapp-float {
             position: fixed;
             width: 65px;
@@ -1162,97 +847,34 @@
 
 <body>
 
-    <!-- NAVBAR -->
-     
-    <nav class="navbar navbar-expand-lg sticky-top custom-navbar">
-        <div class="container">
+    {% include 'navbar.html' %}
 
-            <!-- Logo -->
-            <a class="navbar-brand" href="project.html">
-                <img src="https://www.sirisafety.in/img/sirislogo.png" alt="SIRIS Logo" class="logo">
-            </a>
+    <!--HERO-->
 
-            <!-- Mobile Toggle -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
 
-            
-            <!-- Menu -->
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav align-items-lg-center">
-                    <li class="nav-item">
-                        <a class="nav-link" href="project.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="About.html">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="service.html">Services</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="projectDropdown" role="button"
-                            data-bs-toggle="dropdown">
-                            Our Products
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a class="dropdown-item" href="traffic.html">
-                                    Reliable Traffic &amp; Safety Products
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="contenar.html">
-                                    Container
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
-                    </li>
-                </ul>
-
-                <div class="d-flex align-items-center ms-lg-4 gap-3 mt-lg-0">
-                    <img src="indiamart.png" alt="indiamart.png" height="70" width="130" style="object-fit:contain"
-                        onerror="this.style.display=''">
-                    <a href="https://www.sirisafety.in/upload/brocher.pdf" class="download-btn" download>
-                        <i class="fa-solid fa-download"></i> Download Brochure
-                    </a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- =============================================
-         HERO
-    ============================================= -->
     <section class="hero">
-        <div class="hero-badge">
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
-                stroke="#ffb703" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polygon
-                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-            </svg>
-        </div>
 
         <h1>Transforming Containers <span> into Modern </span>Living Spaces.</h1>
 
-        <p>We specialize in converting high-quality shipping containers into elegant residential, commercial, and industrial spaces. Our focus is on innovative design, superior craftsmanship, and sustainable construction.</p>
+        <p>We specialize in converting high-quality shipping containers into elegant residential, commercial, and
+            industrial spaces. Our focus is on innovative design, superior craftsmanship, and sustainable construction.
+        </p>
 
     </section>
 
     <!-- OUR SERVICES -->
-     
+
     <div class="section-header reveal">
         <h2>Our Services</h2>
-        <p>End-to-end safety solutions designed for roads, industries, and infrastructure.</p>
+        <p>We provide durable and reliable container solutions using quality products for construction sites, industrial
+            facilities, warehouses, and infrastructure projects.</p>
         <div class="section-divider"></div>
     </div>
 
     <div class="services-grid">
 
         <!-- Card 1: Road Safety -->
+
         <div class="service-card reveal d0">
             <div class="card-visual">
                 <div class="card-visual-overlay"></div>
@@ -1266,14 +888,6 @@
                 <h3>Road Safety Solutions</h3>
                 <p>Crash barriers, guardrails, road studs, delineators — engineered to protect motorists at every
                     highway and intersection.</p>
-                <!-- <a href="#" class="card-link"> -->
-                    
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2.5">
-                        <line x1="5" y1="12" x2="19" y2="12" />
-                        <polyline points="12 5 19 12 12 19" />
-                    </svg>
-            
             </div>
         </div>
 
@@ -1294,15 +908,12 @@
                 <p>Sign boards, variable message systems, traffic signals, and calming infrastructure for smooth urban
                     flow.</p>
 
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2.5">
-                        <line x1="5" y1="12" x2="19" y2="12" />
-                        <polyline points="12 5 19 12 12 19" />
-                </svg>
+
             </div>
         </div>
 
         <!-- Card 3: Industrial Safety -->
+
         <div class="service-card reveal d2">
             <div class="card-visual">
                 <div class="card-visual-overlay"></div>
@@ -1317,12 +928,7 @@
                 <h3>Industrial Safety</h3>
                 <p>PPE, machine guarding, warehouse protection, and workplace safety solutions compliant with national
                     standards.</p>
-                    
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2.5">
-                        <line x1="5" y1="12" x2="19" y2="12" />
-                        <polyline points="12 5 19 12 12 19" />
-                    </svg>
+
             </div>
         </div>
 
@@ -1339,17 +945,14 @@
             <div class="card-body">
                 <h3>Fire Safety</h3>
                 <p>Fire extinguishers, suppression systems, alarms, emergency lighting, and evacuation planning.</p>
-             
-                    
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2.5">
-                        <line x1="5" y1="12" x2="19" y2="12" />
-                        <polyline points="12 5 19 12 12 19" />
-                    </svg>
+
+
+
             </div>
         </div>
 
         <!-- Card 5: Installation -->
+
         <div class="service-card reveal d4">
             <div class="card-visual">
                 <div class="card-visual-overlay"></div>
@@ -1363,11 +966,7 @@
                 <h3>Installation &amp; Maintenance</h3>
                 <p>Professional on-site installation, commissioning, and Annual Maintenance Contracts for all safety
                     equipment.</p>
-                    
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2.5">
-                        <line x1="5" y1="12" x2="19" y2="12" />
-                    </svg>
+
             </div>
         </div>
 
@@ -1385,27 +984,18 @@
                 <h3>Smart Safety Systems</h3>
                 <p>CCTV surveillance, ANPR cameras, AI-based traffic monitoring, and intelligent incident detection
                     platforms.</p>
-                <a href="#" class="card-link">
-                    
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2.5">
-                        <line x1="5" y1="12" x2="19" y2="12" />
-                        <polyline points="12 5 19 12 12 19" />
-                    </svg>
-                </a>
             </div>
         </div>
-
     </div>
 
-    <!-- =============================================
-         FEATURED SOLUTIONS
-    ============================================= -->
-    <section class="featured-section">
+    <!-- FEATURED SOLUTIONS -->
+
+
+    <section class="featured-section py-5 m-4">
         <div class="section-header reveal">
-            <div class="section-tag">Deep Dive</div>
             <h2>Featured Solutions</h2>
-            <p>Hand-picked product lines trusted across highways, industrial zones, and smart cities.</p>
+            <p>Hand-picked container solutions trusted across construction sites, industrial zones, warehouses, and
+                infrastructure projects.</p>
             <div class="section-divider"></div>
         </div>
 
@@ -1508,64 +1098,14 @@
         <span class="whatsapp-tooltip">Chat with us</span>
     </a>
 
-    <!-- =============================================
-         FOOTER  (from home page)
-    ============================================= -->
-    <footer>
+    <!-- FOOTER  (from home page) -->
 
-        <div class="footer-box">
-            <h3>SiriSafety</h3>
-            <p>
-                We provide reliable road safety, industrial safety, traffic management,
-                and smart security solutions for safer roads and workplaces.
-            </p>
-            <div class="social-icons">
-                <i class="fa-brands fa-facebook-f"></i>
-                <i class="fa-brands fa-instagram"></i>
-                <i class="fa-brands fa-linkedin-in"></i>
-            </div>
-        </div>
+    {% include 'footer.html' %}
 
-        <div class="footer-box">
-            <h3>Quick Links</h3>
-            <a href="project.html">Home</a>
-            <a href="About.html">About</a>
-            <a href="service.html">Services</a>
-            <a href="contenar.html">Products</a>
-            <a href="contact.html">Contact</a>
-        </div>
 
-        <div class="footer-box">
-            <h3>Our Services</h3>
-            <a href="#">Road Safety</a>
-            <a href="#">Industrial Safety</a>
-            <a href="#">Traffic Management</a>
-            <a href="#">Fire Safety</a>
-            <a href="#">Installation</a>
-        </div>
+    <!-- JAVASCRIPT-->
 
-        <div class="footer-box">
-            <h3>Contact</h3>
-            <p><i class="fa-solid fa-phone"></i> +91 97679 28649</p>
-            <p><i class="fa-solid fa-envelope"></i> sales@sirisafety.in</p>
-            <p><i class="fa-solid fa-location-dot"></i> Nashik, Maharashtra</p>
-        </div>
-<div class="footer-map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.5795002444333!2d73.6731926!3d19.984178800000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdded0052dc0b8b%3A0x4bda3cc1480befc5!2sAwesome%20Agrotech.%20Pvt.%20Ltd.%20Nashik!5e0!3m2!1sen!2sin!4v1785402351717!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin">
-        </iframe> loading="lazy" allowfullscreen>
-      </div>
-    </div>
-    </footer>
 
-    <div class="copyright">
-        &copy; 2026 SiriSafety. All Rights Reserved.
-    </div>
-
-    
-
-    <!-- =============================================
-         JAVASCRIPT
-    ============================================= -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         /* ---- Scroll Reveal (Intersection Observer) ---- */
