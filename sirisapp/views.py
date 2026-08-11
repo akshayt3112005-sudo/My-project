@@ -25,7 +25,7 @@ def contaner2(request):
     return render(request,'contaner2.html')
 
 #def contact(request):
-    #return render(request,'contact.html')
+    #return render(request,'contact.html')q
 
 def footer(request):
     return render(request, 'footer.html')
