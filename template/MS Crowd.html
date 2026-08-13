@@ -41,7 +41,6 @@
 
     /* TOP BAR */
     
-
     /* HERO */
     .page-banner {
     position: relative;
@@ -138,14 +137,165 @@
       align-items: center;
       justify-content: center;
     }
+    /* ================= Product Image Carousel ================= */
+
+.product-image-wrap .carousel {
+    width: 100%;
+    height: 100%;
+}
+
+.product-image-wrap .carousel-inner {
+    width: 100%;
+    height: 100%;
+}
+
+.product-image-wrap .carousel-item {
+    height: 100%;
+}
+
+.product-image-wrap .carousel-item img {
+    width: 100%;
+    height: 340px;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+}
+
+/* Carousel buttons */
+
+.product-image-wrap .carousel-control-prev,
+.product-image-wrap .carousel-control-next {
+    width: 45px;
+    height: 45px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    opacity: 1;
+}
+
+.product-image-wrap .carousel-control-prev {
+    left: 10px;
+}
+
+.product-image-wrap .carousel-control-next {
+    right: 10px;
+}
+
+.product-image-wrap .carousel-control-prev-icon,
+.product-image-wrap .carousel-control-next-icon {
+    width: 20px;
+    height: 20px;
+}
     .product-image-wrap:hover { transform: translateY(-6px); }
-    .product-image-wrap img {
-      max-height: 340px;
-      width: 100%;
-      object-fit: contain;
-      transition: transform .5s;
-      mix-blend-mode: multiply;
-    }
+/* ================= PRODUCT IMAGE ================= */
+
+.product-image-wrap {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+    width: 100%;
+    height: 520px;
+
+    overflow: hidden;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-image-wrap:hover {
+    transform: none;
+}
+
+/* Carousel */
+
+.product-image-wrap .carousel {
+    width: 100%;
+    height: 100%;
+}
+
+.product-image-wrap .carousel-inner {
+    width: 100%;
+    height: 100%;
+}
+
+.product-image-wrap .carousel-item {
+    width: 100%;
+    height: 100%;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-image-wrap .carousel-item.active {
+    display: flex;
+}
+
+/* Product image */
+
+.product-image-wrap .carousel-item img {
+    width: 100%;
+    height: 100%;
+
+    max-width: 100%;
+    max-height: 460px;
+
+    object-fit: contain;
+
+    display: block;
+
+    mix-blend-mode: normal;
+}
+
+/* ================= CAROUSEL ARROWS ================= */
+
+.product-image-wrap .carousel-control-prev,
+.product-image-wrap .carousel-control-next {
+
+    width: 44px;
+    height: 44px;
+
+    top: 50%;
+    transform: translateY(-50%);
+
+    background: rgba(0, 20, 60, 0.75);
+
+    border-radius: 50%;
+
+    opacity: 0;
+
+    transition: all 0.3s ease;
+}
+
+.product-image-wrap:hover .carousel-control-prev,
+.product-image-wrap:hover .carousel-control-next {
+    opacity: 1;
+}
+
+.product-image-wrap .carousel-control-prev {
+    left: 15px;
+}
+
+.product-image-wrap .carousel-control-next {
+    right: 15px;
+}
+
+.product-image-wrap .carousel-control-prev:hover,
+.product-image-wrap .carousel-control-next:hover {
+    background: #135BAE;
+    transform: translateY(-50%) scale(1.08);
+}
+
+.product-image-wrap .carousel-control-prev-icon,
+.product-image-wrap .carousel-control-next-icon {
+    width: 18px;
+    height: 18px;
+}
     .product-image-wrap:hover img { transform: scale(1.05); }
 
     .product-content { display: flex; flex-direction: column; gap: 20px; }
@@ -268,7 +418,11 @@
   const products = [
     {
       title: "MS Crowd Control Barricade",
-      image: "{% static 'image/l.png' %}",
+      images: [
+    "{% static 'image/MS_C.png' %}",
+    "{% static 'image/MS_C1.png' %}",
+    "{% static 'image/MS_C2.png' %}"
+],
       description: "Durable Crowd Control Barricades for events, exhibitions, and public safety applications. Designed for excellent visibility and long-lasting performance.",
       specs: [
         ["Material", "Heavy-duty Mild Steel (MS)"],
@@ -294,11 +448,65 @@
       <tr><td>${label}</td><td>${value}</td></tr>
     `).join('');
 
-    const imageCol = `
-      <div class="product-image-wrap">
-        <img src="${p.image}" alt="${p.title}" loading="lazy"
-          onerror="this.src='https://placehold.co/480x480/f3f4f6/9ca3af?text=Product+Image'" />
-      </div>`;
+const carouselId = `productCarousel${i}`;
+
+const imageCol = `
+<div class="product-image-wrap">
+
+    <div id="${carouselId}" 
+         class="carousel slide" 
+         data-bs-ride="carousel">
+
+        <div class="carousel-inner">
+
+            ${p.images.map((image, index) => `
+                <div class="carousel-item ${index === 0 ? 'active' : ''}">
+
+                    <img 
+                        src="${image}"
+                        alt="${p.title}"
+                        loading="lazy"
+                        onerror="this.src='https://placehold.co/480x480/f3f4f6/9ca3af?text=Product+Image'"
+                    >
+
+                </div>
+            `).join('')}
+
+        </div>
+
+        <!-- Previous -->
+        <button 
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#${carouselId}"
+            data-bs-slide="prev">
+
+            <span class="carousel-control-prev-icon"></span>
+
+            <span class="visually-hidden">
+                Previous
+            </span>
+
+        </button>
+
+        <!-- Next -->
+        <button 
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#${carouselId}"
+            data-bs-slide="next">
+
+            <span class="carousel-control-next-icon"></span>
+
+            <span class="visually-hidden">
+                Next
+            </span>
+
+        </button>
+
+    </div>
+
+</div>`;
 
     const contentCol = `
       <div class="product-content">

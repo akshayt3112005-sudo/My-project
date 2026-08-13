@@ -2,1071 +2,751 @@
 {% load static %}
 {% block content %}
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIRIS Safety</title>
-    
-    <style>
-        
-        /* ================= Banner ================= */
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIRIS Safety</title>
 
-        /* ================= Modern Banner ================= */
+<style>
+
+    /* ================= Banner ================= */
+
+    .banner {
+        height: 600px;
+        width: 100%;
+        background: url("{% static 'image/banner.jpg' %}");
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+    }
+
+    .banner-overlay {
+        position: absolute;
+        inset: 0;
+        background:
+            linear-gradient(
+                90deg,
+                rgba(0, 20, 50, .85),
+                rgba(0, 51, 102, .55),
+                rgba(0, 0, 0, .35)
+            );
+    }
+
+    .banner-container {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .banner-content {
+        color: white;
+        max-width: 650px;
+        animation: slideBanner 1.2s ease;
+    }
+
+    .banner-tag {
+        display: inline-block;
+        background: #ff6600;
+        padding: 10px 22px;
+        border-radius: 30px;
+        font-weight: 600;
+        margin-bottom: 25px;
+    }
+
+    .banner-content h1 {
+        font-size: 60px;
+        line-height: 1.15;
+        font-weight: 800;
+        text-shadow: 0 8px 25px rgba(0, 0, 0, .5);
+    }
+
+    .banner-content p {
+        font-size: 22px;
+        margin: 25px 0;
+        color: #e7f2ff;
+    }
+
+    /* ================= Banner Buttons ================= */
+
+    .banner-buttons {
+        display: flex;
+        gap: 20px;
+    }
+
+    .shop-btn {
+        background: #ff6600;
+        border: none;
+        color: white;
+        padding: 15px 35px;
+        border-radius: 50px;
+        font-size: 18px;
+        font-weight: bold;
+        text-decoration: none;
+        transition: .4s;
+    }
+
+    .shop-btn:hover {
+        background: white;
+        color: #003366;
+        transform: translateY(-5px);
+    }
+
+    .quote-btn {
+        background: white;
+        color: #003366;
+        padding: 15px 35px;
+        border-radius: 50px;
+        font-weight: bold;
+        text-decoration: none;
+        transition: .4s;
+    }
+
+    .quote-btn:hover {
+        background: #ff6600;
+        color: white;
+        transform: translateY(-5px);
+    }
+
+    /* ================= Floating Container Image ================= */
+
+    .floating-container {
+        width: 420px;
+        animation: floatContainer 4s infinite ease-in-out;
+    }
+
+    .floating-container img {
+        width: 100%;
+        border-radius: 25px;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, .45);
+        border: 5px solid rgba(255, 255, 255, .25);
+    }
+
+    /* ================= Banner Animations ================= */
+
+    @keyframes floatContainer {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-25px);
+        }
+    }
+
+    @keyframes slideBanner {
+
+        from {
+            opacity: 0;
+            transform: translateX(-80px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    /* ================= WhatsApp Floating Button ================= */
+
+    .whatsapp-float {
+        position: fixed;
+        width: 65px;
+        height: 65px;
+        right: 30px;
+        bottom: 30px;
+        background: #25D366;
+        color: #fff;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 35px;
+        z-index: 9999;
+        text-decoration: none;
+        box-shadow: 0 10px 25px rgba(37, 211, 102, .5);
+        animation: whatsappFloat 3s ease-in-out infinite;
+        transition: .4s;
+    }
+
+    /* WhatsApp Pulse */
+
+    .whatsapp-float::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #25D366;
+        border-radius: 50%;
+        z-index: -1;
+        animation: whatsappPulse 2s infinite;
+    }
+
+    .whatsapp-float i {
+        transition: .3s;
+    }
+
+    .whatsapp-float:hover {
+        background: #128C7E;
+        transform: translateY(-8px) scale(1.1);
+        color: white;
+    }
+
+    .whatsapp-float:hover i {
+        transform: rotate(15deg);
+    }
+
+    /* WhatsApp Animation */
+
+    @keyframes whatsappFloat {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-12px);
+        }
+    }
+
+    @keyframes whatsappPulse {
+
+        0% {
+            transform: scale(1);
+            opacity: .7;
+        }
+
+        70% {
+            transform: scale(1.8);
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 0;
+        }
+    }
+
+    /* WhatsApp Tooltip */
+
+    .whatsapp-tooltip {
+        position: absolute;
+        right: 75px;
+        background: #0B3C5D;
+        color: white;
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-size: 14px;
+        white-space: nowrap;
+        opacity: 0;
+        transform: translateX(20px);
+        transition: .3s;
+    }
+
+    .whatsapp-float:hover .whatsapp-tooltip {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    /* ================= Product Section ================= */
+
+    .product-section {
+        padding: 80px 0;
+        background: #f5f5f5;
+    }
+
+    .product-section h2 {
+        text-align: center;
+        font-size: 42px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 50px;
+    }
+
+    /* ================= Product Card ================= */
+
+    .product-card {
+        background: #fff;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, .15);
+        transition: .4s;
+        cursor: pointer;
+        animation: cardShow .8s ease;
+    }
+
+    .product-card:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, .25);
+    }
+
+    /* Product Image */
+
+.product-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-img {
+    overflow: hidden;
+}
+
+.product-img img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+.product-info {
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.product-info h4 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.view-btn {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 40px;
+    background: linear-gradient(135deg, #0862e9, #0622f0);
+    color: #fff;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: .5px;
+    transition: .4s ease;
+    box-shadow: 0 10px 20px rgba(0, 51, 102, .25);
+    margin-top: auto;
+}
+
+    .view-btn:hover {
+        color: #fff;
+        transform: translateY(-5px);
+    }
+
+    /* ================= Product Card Animation ================= */
+
+    @keyframes cardShow {
+
+        from {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* ================= Tablet ================= */
+
+    @media (max-width: 992px) {
 
         .banner {
-
-            height: 600px;
-            width: 100%;
-            background: url("images/banner.jpg");
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            overflow: hidden;
-
-            display: flex;
-            align-items: center;
-
+            height: auto;
+            padding: 80px 0;
         }
-
-
-        .banner-overlay {
-
-            position: absolute;
-            inset: 0;
-
-            background:
-                linear-gradient(90deg,
-                    rgba(0, 20, 50, .85),
-                    rgba(0, 51, 102, .55),
-                    rgba(0, 0, 0, .35));
-
-        }
-
-
 
         .banner-container {
-
-            position: relative;
-            z-index: 2;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
+            flex-direction: column;
+            text-align: center;
         }
-
-
-
-        .banner-content {
-
-            color: white;
-            max-width: 650px;
-
-            animation: slideBanner 1.2s ease;
-
-        }
-
-
-
-        .banner-tag {
-
-            display: inline-block;
-
-            background: #ff6600;
-            padding: 10px 22px;
-
-            border-radius: 30px;
-
-            font-weight: 600;
-
-            margin-bottom: 25px;
-
-        }
-
-
 
         .banner-content h1 {
-
-            font-size: 60px;
-            line-height: 1.15;
-
-            font-weight: 800;
-
-            text-shadow:
-                0 8px 25px rgba(0, 0, 0, .5);
-
+            font-size: 40px;
         }
-
-
-
-        .banner-content p {
-
-            font-size: 22px;
-
-            margin: 25px 0;
-
-            color: #e7f2ff;
-
-        }
-
-
-
-        .banner-buttons {
-
-            display: flex;
-            gap: 20px;
-
-        }
-
-
-
-        .shop-btn {
-
-            background: #ff6600;
-
-            border: none;
-
-            color: white;
-
-            padding: 15px 35px;
-
-            border-radius: 50px;
-
-            font-size: 18px;
-
-            font-weight: bold;
-
-            transition: .4s;
-
-        }
-
-
-
-        .shop-btn:hover {
-
-            background: white;
-
-            color: #003366;
-
-            transform: translateY(-5px);
-
-        }
-
-
-
-        .quote-btn {
-
-            background: white;
-
-            color: #003366;
-
-            padding: 15px 35px;
-
-            border-radius: 50px;
-
-            font-weight: bold;
-
-            text-decoration: none;
-
-            transition: .4s;
-
-        }
-
-
-
-        .quote-btn:hover {
-
-            background: #ff6600;
-
-            color: white;
-
-            transform: translateY(-5px);
-
-        }
-
-
-
-        /* Container floating image */
-
 
         .floating-container {
-
-            width: 420px;
-
-            animation: floatContainer 4s infinite ease-in-out;
-
+            width: 300px;
+            margin-top: 40px;
         }
 
-
-
-        .floating-container img {
-
-            width: 100%;
-
-            border-radius: 25px;
-
-            box-shadow:
-
-                0 25px 50px rgba(0, 0, 0, .45);
-
-            border: 5px solid rgba(255, 255, 255, .25);
-
-        }
-
-
-
-        /* Floating icons */
-
-
-        .floating-icon {
-
-            position: absolute;
-
-            font-size: 45px;
-
-            background: white;
-
-            width: 80px;
-            height: 80px;
-
-            border-radius: 50%;
-
-            display: flex;
-
+        .banner-buttons {
             justify-content: center;
+        }
+    }
 
-            align-items: center;
+    /* ================= Mobile ================= */
 
-            box-shadow: 0 15px 30px rgba(0, 0, 0, .25);
+    @media (max-width: 768px) {
 
-            animation: floating 5s infinite;
-
+        .banner-content h1 {
+            font-size: 32px;
         }
 
-
-
-        .icon1 {
-
-            top: 80px;
-            left: 8%;
-
+        .banner-content p {
+            font-size: 18px;
         }
 
-
-        .icon2 {
-
-            right: 8%;
-            top: 120px;
-
-        }
-
-
-        .icon3 {
-
-            bottom: 80px;
-            left: 45%;
-
-        }
-
-
-
-        @keyframes floatContainer {
-
-
-            0%,
-            100% {
-
-                transform: translateY(0);
-
-            }
-
-            50% {
-
-                transform: translateY(-25px);
-
-            }
-
-
-        }
-
-
-
-        @keyframes floating {
-
-
-            0%,
-            100% {
-
-                transform: translateY(0);
-
-            }
-
-            50% {
-
-                transform: translateY(-20px);
-
-            }
-
-
-        }
-
-
-
-        @keyframes slideBanner {
-
-
-            from {
-
-                opacity: 0;
-
-                transform: translateX(-80px);
-
-            }
-
-
-            to {
-
-                opacity: 1;
-
-                transform: translateX(0);
-
-            }
-
-
-        }
-
-
-
-        /* Mobile */
-
-        @media(max-width:992px) {
-
-            .banner {
-
-                height: auto;
-
-                padding: 80px 0;
-
-            }
-
-
-            .banner-container {
-
-                flex-direction: column;
-
-                text-align: center;
-
-            }
-
-
-            .banner-content h1 {
-
-                font-size: 40px;
-
-            }
-
-
-            .floating-container {
-
-                width: 300px;
-
-                margin-top: 40px;
-
-            }
-
-
-            .banner-buttons {
-
-                justify-content: center;
-
-            }
-
-
-            .floating-icon {
-
-                display: none;
-
-            }
-
-        }
-
-
-        /* ===== WhatsApp Floating Button ===== */
-
-        .whatsapp-float {
-            position: fixed;
-            width: 65px;
-            height: 65px;
-            right: 30px;
-            bottom: 30px;
-
-            background: #25D366;
-            color: #fff;
-
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            font-size: 35px;
-
-            z-index: 9999;
-            text-decoration: none;
-
-            box-shadow:
-                0 10px 25px rgba(37, 211, 102, .5);
-
-            animation: whatsappFloat 3s ease-in-out infinite;
-
-            transition: .4s;
-        }
-
-
-        /* Pulse Ring */
-        .whatsapp-float::before {
-
-            content: "";
-
-            position: absolute;
-
-            width: 100%;
-            height: 100%;
-
-            background: #25D366;
-
-            border-radius: 50%;
-
-            z-index: -1;
-
-            animation: whatsappPulse 2s infinite;
-
-        }
-
-
-        /* Icon */
-        .whatsapp-float i {
-
-            transition: .3s;
-
-        }
-
-
-
-        /* Hover */
-        .whatsapp-float:hover {
-
-            background: #128C7E;
-
-            transform: translateY(-8px) scale(1.1);
-
-            color: white;
-
-        }
-
-
-        .whatsapp-float:hover i {
-
-            transform: rotate(15deg);
-
-        }
-
-
-        /* Floating Animation */
-
-        @keyframes whatsappFloat {
-
-            0%,
-            100% {
-
-                transform: translateY(0);
-
-            }
-
-            50% {
-
-                transform: translateY(-12px);
-
-            }
-
-        }
-
-
-
-        /* Pulse Animation */
-
-        @keyframes whatsappPulse {
-
-
-            0% {
-
-                transform: scale(1);
-
-                opacity: .7;
-
-            }
-
-
-            70% {
-
-                transform: scale(1.8);
-
-                opacity: 0;
-
-            }
-
-
-            100% {
-
-                opacity: 0;
-
-            }
-
-        }
-
-
-
-        /* Tooltip */
-
-        .whatsapp-tooltip {
-
-
-            position: absolute;
-
-            right: 75px;
-
-            background: #0B3C5D;
-
-            color: white;
-
-            padding: 8px 15px;
-
-            border-radius: 20px;
-
+        .banner-tag {
             font-size: 14px;
-
-            white-space: nowrap;
-
-            opacity: 0;
-
-            transform: translateX(20px);
-
-            transition: .3s;
-
+            padding: 8px 16px;
         }
 
-
-        .whatsapp-float:hover .whatsapp-tooltip {
-
-            opacity: 1;
-
-            transform: translateX(0);
-
+        .banner-buttons {
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
         }
 
-
-
-        /* Mobile */
-
-        @media(max-width:768px) {
-
-            .whatsapp-float {
-
-                width: 58px;
-
-                height: 58px;
-
-                right: 20px;
-
-                bottom: 20px;
-
-                font-size: 30px;
-
-            }
-
+        .shop-btn,
+        .quote-btn {
+            width: 220px;
+            text-align: center;
         }
 
-        /* ================= Product Section ================= */
+        .floating-container {
+            width: 280px;
+        }
 
         .product-section {
-            padding: 80px 0;
-            background: #f5f5f5;
+            padding: 50px 15px;
         }
 
         .product-section h2 {
-            text-align: center;
-            font-size: 42px;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 50px;
-        }
-
-        .product-card {
-            background: #fff;
-            border-radius: 18px;
-            overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, .15);
-            transition: .4s;
-            cursor: pointer;
-        }
-
-        .product-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, .25);
-        }
-
-        .product-img {
-            overflow: hidden;
-        }
-
-        .product-img img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            transition: .5s;
-        }
-
-        .product-card:hover .product-img img {
-            transform: scale(1.12);
-        }
-
-        .product-info {
-            padding: 20px;
-            text-align: center;
+            font-size: 32px;
         }
 
         .product-info h4 {
-            font-size: 22px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            transition: .4s;
+            font-size: 20px;
         }
 
-        .view-btn {
-            width: 100%;
-            padding: 13px;
-            border: none;
-            border-radius: 40px;
-            background: linear-gradient(135deg, #0862e9, #0622f0);
-            color: #fff;
-            font-size: 17px;
-            font-weight: 600;
-            letter-spacing: .5px;
-            transition: .4s ease;
-            box-shadow: 0 10px 20px rgba(0, 51, 102, .25);
+        .whatsapp-float {
+            width: 58px;
+            height: 58px;
+            right: 20px;
+            bottom: 20px;
+            font-size: 30px;
         }
+    }
 
-        .view-btn:hover {
-            color: #fff;
-            transform: translateY(-5px);
+    
 
-        }
-
-        .product-card {
-            animation: cardShow .8s ease;
-        }
-
-        @keyframes cardShow {
-
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-        }
-
-        /* ===== Simple Pagination ===== */
-
-        .pagination {
-            gap: 8px;
-            margin-top: 40px;
-        }
-
-        .pagination .page-link {
-
-            padding: 10px 16px;
-
-            border-radius: 6px;
-
-            border: 1px solid #ddd;
-
-            background: white;
-
-            color: #003366;
-
-            font-weight: 600;
-
-            transition: .3s ease;
-        }
-
-        .pagination {
-            gap: 8px;
-            margin-top: 40px;
-        }
-
-        .pagination .page-link {
-
-            padding: 8px 16px;
-
-            border-radius: 5px;
-
-            font-size: 16px;
-
-            font-weight: 500;
-
-            transition: .3s ease;
-
-        }
+</style>
 
 
-        .pagination .page-link:hover {
+<section class="banner">
 
-            transform: translateY(-2px);
+    <div class="banner-overlay"></div>
 
-        }
+    <div class="container banner-container">
 
+        <div class="banner-content">
 
-        .pagination .active .page-link {
+            <span class="banner-tag">
+                🚧 Premium Modular Container Solutions
+            </span>
 
-            font-weight: 700;
+            <h1>
+                Smart Portable Containers<br>
+                For Every Industry
+            </h1>
 
-        }
+            <p>
+                Durable, Secure & Customized Container Solutions
+                for Offices, Homes, Security Cabins and More.
+            </p>
 
+            <div class="banner-buttons">
 
-        .prev-btn .page-link,
-        .next-btn .page-link {
+                <a href="{% url 'office' %}" class="shop-btn">
+                    Explore Products
+                </a>
 
-            padding: 8px 20px;
-
-        }
-
-
-        .pagination .page-link:focus {
-
-            box-shadow: none;
-
-        }
-
-    </style>
-
-
-    <section class="banner">
-
-        <div class="banner-overlay"></div>
-
-        <div class="container banner-container">
-
-            <div class="banner-content">
-
-                <span class="banner-tag">
-                    🚧 Premium Modular Container Solutions
-                </span>
-
-                <h1>
-                    Smart Portable Containers<br>
-                    For Every Industry
-                </h1>
-
-                <p>
-                    Durable, Secure & Customized Container Solutions
-                    for Offices, Homes, Security Cabins and More.
-                </p>
-
-<div class="banner-buttons">
-
-    <a href="{% url 'contaner2' %}" class="shop-btn">
-        Explore Products
-    </a>
-
-    <a href="{% url 'contact' %}" class="quote-btn">
-        Get Quote
-    </a>
-
-</div>
+                <a href="{% url 'contact' %}" class="quote-btn">
+                    Get Quote
+                </a>
 
             </div>
-
-
-            <div class="floating-container">
-
-                <img src="{% static 'image/Portable Container Houses.jpg' %}" alt="Container">
-
-            </div>
-
 
         </div>
 
 
-    </section>
-    <!-- WhatsApp Floating Button -->
+        <div class="floating-container">
 
-    <a href="https://api.whatsapp.com/send/?phone=9767928649&text=Hello%20I%20am%20interested%20in%20your%20products&type=phone_number&app_absent=0"
-        class="whatsapp-float" target="_blank">
+            <img src="{% static 'image/Portable Container Houses.jpg' %}" alt="Container">
 
-
-        <i class="fa-brands fa-whatsapp"></i>
+        </div>
 
 
-        <span class="whatsapp-tooltip">
-            Chat with us
-        </span>
-
-
-    </a>
-
-    <section class="product-section">
-
-        <div class="container">
-
-            <div class="text-center my-5">
-                <h2 class="section-title d-inline-block">Container Products</h2>
-            </div>
-
-            <div class="row g-4">
-
-                <!-- Product 1 -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="product-card">
-                        <div class="product-img">
-                            <img src="{% static 'image/Restaurant Container 1.jpg' %}" alt="">
-                        </div>
-                        <div class="product-info">
-                            <h4>Restaurant Container</h4>
-                            <a href="{% url 'Restaurant_Container' %}">
-                                <button class="view-btn">View Details</button>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 2 -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="product-card">
-                        <div class="product-img">
-                            <img src="{% static 'image/office container.jpeg' %}" alt="">
-                        </div>
-                        <div class="product-info">
-                            <h4>office container</h4>
-                            <a href="{% url 'office' %}">
-                                <button class="view-btn">View Details</button>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 3 -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="product-card">
-                        <div class="product-img">
-                            <img src="{% static 'image/office metal container.jpg' %}" alt="">
-                        </div>
-                        <div class="product-info">
-                            <h4>office metal container</h4>
-                            <a href="{% url 'office_metal_container' %}">
-                                <button class="view-btn">View Details</button>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 4 -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="product-card">
-                        <div class="product-img">
-                            <img src="{% static 'image/Portable Toilet Container.jpeg' %}" alt="">
-                        </div>
-                        <div class="product-info">
-                            <h4>Portable Toilet Container</h4>
-                            <a href="{% url 'Portable_Toilet_Container' %}">
-                                <button class="view-btn">View Details</button>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 5 -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="product-card">
-                        <div class="product-img">
-                            <img src="{% static 'image/Portable Security Guard Cabins.jpg' %}" alt="">
-                        </div>
-                        <div class="product-info">
-                            <h4>Portable Security Guard Cabins</h4>
-                            <a href="{% url 'Portable_Security_Guard_Cabins' %}">
-                                <button class="view-btn">View Details</button>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 6 -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="product-card">
-                        <div class="product-img">
-                            <img src="{% static 'image/Single Container Café.png' %}" alt="">
-                        </div>
-                        <div class="product-info">
-                            <h4>Single Container Café</h4>
-                            <a href="{% url 'single' %}">
-                                <button class="view-btn">View Details</button>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 7 -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="product-card">
-                        <div class="product-img">
-                            <img src="{% static 'image/Luxury Container Villas.jpg' %}" alt="">
-                        </div>
-                        <div class="product-info">
-                            <h4>Luxury Container Villas</h4>
-                            <a href="{% url 'luxuryvilla' %}">
-                                <button class="view-btn">View Details</button>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 8 -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="product-card">
-                        <div class="product-img">
-                            <img src="{% static 'image/Cabin.jpg' %}" alt="">
-                        </div>
-                        <div class="product-info">
-                            <h4>Cabin</h4>
-                            <a href="{% url 'Cabin' %}">
-                                <button class="view-btn">View Details</button>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 9 -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="product-card">
-                        <div class="product-img"><img src="{% static 'image/MS Bunk Bed Container.webp' %}"></div>
-                        <div class="product-info">
-                            <h4>MS Bunk Bed Container</h4><a href="{% url 'MS_Bunk_Bed_Container' %}"><button
-                                    class="view-btn">View
-                                    Details</button></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 10 -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="product-card">
-                        <div class="product-img"><img src="{% static 'image/Flat Pack Containers.jpg' %}"></div>
-                        <div class="product-info">
-                            <h4>Flat Pack Containers</h4><a href="{% url 'flatpack' %}"><button class="view-btn">View
-                                    Details</button></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 11 -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="product-card">
-                        <div class="product-img"><img src="{% static 'image/Portable Container Houses.jpg' %}"></div>
-                        <div class="product-info">
-                            <h4>Portable Container Houses</h4><a href="{% url 'Portable_house' %}"><button
-                                    class="view-btn">View Details</button></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 12 -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="product-card">
-                        <div class="product-img"><img src="{% static 'image/Sanitation & Hygiene Solutions.jpeg' %}"></div>
-                        <div class="product-info">
-                            <h4>Sanitation & Hygiene Solutions</h4><a href="{% url 'Sanitation_Hygiene_Solutions' %}"><button
-                                    class="view-btn">View Details</button></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 13 -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="product-card">
-                        <div class="product-img"><img src="{% static 'image/Luxury Modular Site Offices 1.jpg' %}"></div>
-                        <div class="product-info">
-                            <h4>Luxury Modular Site Offices</h4><a href="{% url 'Luxury_Modular_Site_Offices' %}"><button
-                                    class="view-btn">View Details</button></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 14 -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="product-card">
-                        <div class="product-img"><img src="{% static 'image/Swimming Pool Containers 1.png' %}"></div>
-                        <div class="product-info">
-                            <h4>Swimming Pool Containers</h4><a href="{% url 'Swimming_Pool_Containers' %}"><button
-                                    class="view-btn">View Details</button></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 15 -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="product-card">
-                        <div class="product-img"><img src="{% static 'image/Food & Hospitality Container.jpg' %}"></div>
-                        <div class="product-info">
-                            <h4>Food & Hospitality Containers</h4><a href="{% url 'Food_Hospitality' %}"><button
-                                    class="view-btn">View Details</button></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 16 -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="product-card">
-                        <div class="product-img"><img src="{% static 'image/Executive Office Container.jpg' %}"></div>
-                        <div class="product-info">
-                            <h4>Executive Office Container</h4><a href="{% url 'Executive_Office_Container' %}"><button
-                                    class="view-btn">View Details</button></a>
-                        </div>
-                    </div>
-                </div>
-    </section>
-
-    <div class="container my-5">
-        <nav>
-            <ul class="pagination justify-content-center">
-
-                <li class="page-item next-btn">
-                    <a class="page-link" href="{% url 'contaner' %}">
-                        ← Previous
-                    </a>
-                </li>
-
-                <li class="page-item active">
-                    <a class="page-link" href="{% url 'contaner' %}">1</a>
-                </li>
-
-                <li class="page-item">
-                    <a class="page-link" href="{% url 'contaner2' %}">2</a>
-                </li>
-
-                <li class="page-item next-btn">
-                    <a class="page-link" href="{% url 'contaner2' %}">
-                        Next →
-                    </a>
-                </li>
-            </ul>
-        </nav>
     </div>
 
 
+</section>
+<!-- WhatsApp Floating Button -->
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
- 
-    {% include 'footer.html' %}
-    {% endblock %}
+<a href="https://api.whatsapp.com/send/?phone=9767928649&text=Hello%20I%20am%20interested%20in%20your%20products&type=phone_number&app_absent=0"
+    class="whatsapp-float" target="_blank">
+
+
+    <i class="fa-brands fa-whatsapp"></i>
+
+
+    <span class="whatsapp-tooltip">
+        Chat with us
+    </span>
+
+
+</a>
+
+<section class="product-section">
+
+    <div class="container">
+
+        <div class="text-center my-5">
+            <h2 class="section-title d-inline-block">Container Products</h2>
+        </div>
+
+        <div class="row g-4">
+
+            <!-- Product 1 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="{% static 'image/Restaurant Container 1.jpg' %}" alt="">
+                    </div>
+                    <div class="product-info">
+                        <h4>Restaurant Container</h4>
+                        <a href="{% url 'Restaurant_Container' %}">
+                            <button class="view-btn">View Details</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="{% static 'image/office container.jpeg' %}" alt="">
+                    </div>
+                    <div class="product-info">
+                        <h4>office container</h4>
+                        <a href="{% url 'office' %}">
+                            <button class="view-btn">View Details</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="{% static 'image/construction site container office.jpg' %}" alt="">
+                    </div>
+                    <div class="product-info">
+                        <h4>construction site container office</h4>
+                        <a href="{% url 'construction' %}">
+                            <button class="view-btn">View Details</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="{% static 'image/Portable Toilet Container.jpeg' %}" alt="">
+                    </div>
+                    <div class="product-info">
+                        <h4>Portable Toilet Container</h4>
+                        <a href="{% url 'Portable_Toilet_Container' %}">
+                            <button class="view-btn">View Details</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="{% static 'image/Portable Security Guard Cabins.jpg' %}" alt="">
+                    </div>
+                    <div class="product-info">
+                        <h4>Portable Security Guard Cabins</h4>
+                        <a href="{% url 'Portable_Security_Guard_Cabins' %}">
+                            <button class="view-btn">View Details</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="{% static 'image/Single Container Café.png' %}" alt="">
+                    </div>
+                    <div class="product-info">
+                        <h4>Single Container Café</h4>
+                        <a href="{% url 'single' %}">
+                            <button class="view-btn">View Details</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 7 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="{% static 'image/Luxury Container Villas.jpg' %}" alt="">
+                    </div>
+                    <div class="product-info">
+                        <h4>Luxury Container Villas</h4>
+                        <a href="{% url 'luxuryvilla' %}">
+                            <button class="view-btn">View Details</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 8 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="{% static 'image/Cabin.jpg' %}" alt="">
+                    </div>
+                    <div class="product-info">
+                        <h4>Cabin</h4>
+                        <a href="{% url 'Cabin' %}">
+                            <button class="view-btn">View Details</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 9 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="product-card">
+                    <div class="product-img"><img src="{% static 'image/Portable Toilet on Construction Site.jpg' %}">
+                    </div>
+                    <div class="product-info">
+                        <h4>Portable Toilet on Construction Site</h4><a
+                            href="{% url 'Toilet_on_Construction_Site' %}"><button class="view-btn">View
+                                Details</button></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 10 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="product-card">
+                    <div class="product-img"><img src="{% static 'image/Modular Office Container System 2.jpg' %}">
+                    </div>
+                    <div class="product-info">
+                        <h4>Modular Office Container System</h4><a href="{% url 'Modular_Office' %}"><button
+                                class="view-btn">View
+                                Details</button></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 11 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="product-card">
+                    <div class="product-img"><img src="{% static 'image/Portable Container Houses.jpg' %}"></div>
+                    <div class="product-info">
+                        <h4>Portable Container Houses</h4><a href="{% url 'Portable_house' %}"><button
+                                class="view-btn">View Details</button></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 12 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="product-card">
+                    <div class="product-img"><img src="{% static 'image/Sanitation & Hygiene Solutions.jpeg' %}"></div>
+                    <div class="product-info">
+                        <h4>Sanitation & Hygiene Solutions</h4><a
+                            href="{% url 'Sanitation_Hygiene_Solutions' %}"><button class="view-btn">View
+                                Details</button></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 13 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="{% static 'image/Porta Cabins.webp' %}" alt="">
+                    </div>
+                    <div class="product-info">
+                        <h4>Porta Cabins</h4>
+                        <a href="{% url 'Porta_Cabins' %}">
+                            <button class="view-btn">View Details</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 14 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="{% static 'image/Portable Mobile Hospitals.jpeg' %}" alt="">
+                    </div>
+                    <div class="product-info">
+                        <h4>Portable Mobile Hospitals</h4>
+                        <a href="{% url 'Mobile_Hospitals' %}">
+                            <button class="view-btn">View Details</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 15 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="product-card">
+                    <div class="product-img"><img src="{% static 'image/Food & Hospitality Container.jpg' %}"></div>
+                    <div class="product-info">
+                        <h4>Food & Hospitality Containers</h4><a href="{% url 'Food_Hospitality' %}"><button
+                                class="view-btn">View Details</button></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 16 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="{% static 'image/Container Hotel Rooms 1.webp' %}" alt="">
+                    </div>
+                    <div class="product-info">
+                        <h4>Container Hotel Rooms</h4>
+                        <a href="{% url 'Hotel_Rooms' %}">
+                            <button class="view-btn">View Details</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+</section>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+{% include 'footer.html' %}
+{% endblock %}

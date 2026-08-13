@@ -1101,14 +1101,13 @@
       <div class="col-lg-4 col-md-6 reveal" style="transition-delay:.05s">
         <div class="product-card">
           <div class="product-img-wrap">
-            <img src="{% static 'image/container-office-and-home-1-3.jpg.jpg' %}" alt="MS Office Container">
+            <img src="{% static 'image/Single Container Café.png' %}" alt="MS Office Container">
             <div class="img-overlay"><i class="bi bi-eye me-2"></i>Quick View</div>
           </div>
           <div class="product-content">
-            <h4>MS Office Container</h4>
-            <p>Strong and durable portable office containers designed for construction sites, industries, and project
-              offices.</p>
-            <a href="{% url 'office' %}" class="btn-product">View Details</a>
+            <h4> Container</h4>
+            <p>Strong and durable portable containers suitable for offices, construction sites, storage, and industrial applications.</p>
+            <a href="{% url 'contaner' %}" class="btn-product">View Details</a>
           </div>
         </div>
       </div>
@@ -1116,13 +1115,13 @@
       <div class="col-lg-4 col-md-6 reveal" style="transition-delay:.12s">
         <div class="product-card">
           <div class="product-img-wrap">
-            <img src="{% static 'image/Flat Pack Containers.jpg' %}" alt="Porta Cabin">
-            <div class="img-overlay"><i class="bi bi-eye me-2"></i>Quick View</div>
+        <img src="{% static 'image/Rubber Speed Breaker 50MM.jpg' %}" alt="">
+          <div class="img-overlay"><i class="bi bi-eye me-2"></i>Quick View</div>
           </div>
           <div class="product-content">
-            <h4>Flat Pack Containers</h4>
-            <p>Customized modular cabins providing comfortable and efficient workspace solutions.</p>
-            <a href="{% url 'flatpack' %}" class="btn-product">View Details</a>
+            <h4>Rubber Speed Breaker 50MM</h4>
+            <p>Heavy-duty rubber speed breaker designed to effectively control vehicle speed and improve road safety.</p>
+            <a href="{% url 'RubberSpeedBreaker' %}" class="btn-product">View Details</a>
           </div>
         </div>
       </div>
@@ -1130,13 +1129,13 @@
       <div class="col-lg-4 col-md-6 reveal" style="transition-delay:.19s">
         <div class="product-card">
           <div class="product-img-wrap">
-            <img src="{% static 'image/Portable Security Guard Cabins 3.jpg' %}" alt="Security Cabin">
+            <img src="{% static 'image/Queue Manager.jpeg' %}" alt="Security Cabin">
             <div class="img-overlay"><i class="bi bi-eye me-2"></i>Quick View</div>
           </div>
           <div class="product-content">
-            <h4>Security Cabin</h4>
-            <p>Compact and weather-resistant security cabins for industrial and commercial locations.</p>
-            <a href="{% url 'Portable_Security_Guard_Cabins' %}" class="btn-product">View Details</a>
+            <h4>Queue Manage</h4>
+            <p>Practical crowd-control solution designed to organize queues and manage pedestrian movement in public and commercial areas.</p>
+            <a href="{% url 'SSQueueManager' %}" class="btn-product">View Details</a>
           </div>
         </div>
       </div>
@@ -1144,13 +1143,27 @@
       <div class="col-lg-4 col-md-6 reveal" style="transition-delay:.05s">
         <div class="product-card">
           <div class="product-img-wrap">
-            <img src="{% static 'image/Single Container Café 2.png' %}" alt="Accommodation Container">
+            <img src="{% static 'image/Sand and Water Fillable Barricades.png' %}" alt="Accommodation Container">
             <div class="img-overlay"><i class="bi bi-eye me-2"></i>Quick View</div>
           </div>
           <div class="product-content">
-            <h4>Single Container Café</h4>
-            <p>Comfortable living spaces for workforce housing and remote project locations.</p>
-            <a href="{% url 'single' %}" class="btn-product">View Details</a>
+            <h4>Sand and Water Fillable Barricades</h4>
+            <p>Durable and lightweight barricades designed for road safety, construction areas, and temporary traffic control.</p>
+            <a href="{% url 'SandandWater' %}" class="btn-product">View Details</a>
+          </div>
+        </div>
+      </div>
+
+            <div class="col-lg-4 col-md-6 reveal" style="transition-delay:.19s">
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <img src="{% static 'image/METAL EXPANDABLE BARRIER.jpg' %}" alt="Custom Modular Solutions">
+            <div class="img-overlay"><i class="bi bi-eye me-2"></i>Quick View</div>
+          </div>
+          <div class="product-content">
+            <h4>METAL EXPANDABLE BARRIER</h4>
+            <p>Portable and adjustable safety barrier ideal for controlling access and securing restricted areas.</p>
+            <a href="{% url 'metal' %}" class="btn-product">View Details</a>
           </div>
         </div>
       </div>
@@ -1158,30 +1171,18 @@
       <div class="col-lg-4 col-md-6 reveal" style="transition-delay:.12s">
         <div class="product-card">
           <div class="product-img-wrap">
-            <img src="{% static 'image/Portable Container Houses.jpg' %}" alt="Storage Container">
+            <img src="{% static 'image/Trafic Mirrors.png' %}" alt="Storage Container">
             <div class="img-overlay"><i class="bi bi-eye me-2"></i>Quick View</div>
           </div>
           <div class="product-content">
-            <h4>Container Houses</h4>
-            <p>Secure storage solutions for equipment, materials, and industrial goods.</p>
-            <a href="{% url 'Portable_house' %}" class="btn-product">View Details</a>
+            <h4>Trafic Mirrors</h4>
+            <p>High-visibility safety mirrors that improve road visibility and help prevent accidents at blind spots and intersections.</p>
+            <a href="{% url 'Trafic_Mirrors' %}" class="btn-product">View Details</a>
           </div>
         </div>
       </div>
 
-      <div class="col-lg-4 col-md-6 reveal" style="transition-delay:.19s">
-        <div class="product-card">
-          <div class="product-img-wrap">
-            <img src="{% static 'image/Portable Toilet Container.jpeg' %}" alt="Custom Modular Solutions">
-            <div class="img-overlay"><i class="bi bi-eye me-2"></i>Quick View</div>
-          </div>
-          <div class="product-content">
-            <h4>Toilet Container</h4>
-            <p>Customized container solutions designed according to your project requirements.</p>
-            <a href="{% url 'Portable_Toilet_Container' %}" class="btn-product">View Details</a>
-          </div>
-        </div>
-      </div>
+
 
     </div>
   </div>
