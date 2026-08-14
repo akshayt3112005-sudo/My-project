@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -117,23 +118,26 @@
 
         /* HERO */
 
-        .hero {
-            height: 450px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 0 24px;
-            position: relative;
-            overflow: hidden;
+.hero {
+    height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 24px;
+    position: relative;
+    overflow: hidden;
 
-            background: linear-gradient(rgba(0, 0, 0, 0.45),
-                    rgba(0, 0, 0, 0.45)),
-                url("{% static 'image/contact.jpg' %}");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.45),
+        rgba(0, 0, 0, 0.45)
+    ),
+    url("{% static 'image/contact.jpg' %}");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 
         .hero-content {
             position: relative;
